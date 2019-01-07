@@ -1,0 +1,40 @@
+@charset "utf-8";
+/*公用样式*/
+*{
+  margin:0;
+  padding:0;
+}
+a{
+  text-decoration:none;
+}
+ul,li,ol{
+  list-style:none;
+}
+.clear{
+  clear:both;
+  height:0;
+  line-height:0;
+  overflow:hidden;/*超出隐藏*/
+  font-size:0;
+}
+img{
+  border:0; /*去掉超链接下图片边框，IE8*/
+}
+body{
+  font-family:Arial,Verdana,"Microsoft YaHei",SimSun;   /*统一文字*/
+
+}
+input,button{
+  outline:none;
+}
+/*禁止复制、拖动、选中*/
+.copy_prohibited{
+  moz-user-select: -moz-none;
+  -moz-user-select: none;
+  -o-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+/*公用样式 e*/

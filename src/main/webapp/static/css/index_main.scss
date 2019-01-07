@@ -1,0 +1,19 @@
+@import "public.css";
+.content-page{
+  >.content{
+    width: 1210px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: block;
+    table{
+      position: relative;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+.content-page::-webkit-scrollbar{
+  display:none;
+}
+
+
