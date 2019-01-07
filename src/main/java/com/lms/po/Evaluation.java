@@ -1,62 +1,38 @@
 package com.lms.po;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "Evaluation")     //评教表，用来存评教的结果
 public class Evaluation {
+    private Integer id;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)  //自动增量
-    private Integer id;                         //ID
+    private BigDecimal score;
 
-    private String evaluationJudgesId;         //评教人ID
+    private Integer evaluationTremId;
 
-    private String evaluationPlayerId;         //被评人ID
-
-    /**
-     * 课程Id
-     */
     private Integer courseId;
 
-    /**
-     * 班级Num
-     */
-    private Integer clazzNum;
+    private String clazzNum;
 
-    private BigDecimal score;                    //分数
+    private String evaluationJudgesId;
 
-    private Integer evaluationTremId;              //评测学期 2017-2018学年第二学期
+    private String evaluationPlayerId;
 
-    public Integer getClazzNum() {
-        return clazzNum;
-    }
-
-    public void setClazzNum(Integer clazzNum) {
-        this.clazzNum = clazzNum;
-    }
-
-    public Integer getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
-    }
-
-
-    public Integer getEvaluationTremId() {
-        return evaluationTremId;
-    }
-
-    public void setEvaluationTremId(Integer evaluationTremId) {
+    public Evaluation(Integer id, BigDecimal score, Integer evaluationTremId, Integer courseId, String clazzNum, String evaluationJudgesId, String evaluationPlayerId) {
+        this.id = id;
+        this.score = score;
         this.evaluationTremId = evaluationTremId;
+        this.courseId = courseId;
+        this.clazzNum = clazzNum;
+        this.evaluationJudgesId = evaluationJudgesId;
+        this.evaluationPlayerId = evaluationPlayerId;
+    }
+
+    public Evaluation() {
+        super();
     }
 
     public Integer getId() {
         return id;
-
     }
 
     public void setId(Integer id) {
@@ -71,7 +47,28 @@ public class Evaluation {
         this.score = score;
     }
 
-    public Evaluation() {
+    public Integer getEvaluationTremId() {
+        return evaluationTremId;
+    }
+
+    public void setEvaluationTremId(Integer evaluationTremId) {
+        this.evaluationTremId = evaluationTremId;
+    }
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getClazzNum() {
+        return clazzNum;
+    }
+
+    public void setClazzNum(String clazzNum) {
+        this.clazzNum = clazzNum == null ? null : clazzNum.trim();
     }
 
     public String getEvaluationJudgesId() {
@@ -79,7 +76,7 @@ public class Evaluation {
     }
 
     public void setEvaluationJudgesId(String evaluationJudgesId) {
-        this.evaluationJudgesId = evaluationJudgesId;
+        this.evaluationJudgesId = evaluationJudgesId == null ? null : evaluationJudgesId.trim();
     }
 
     public String getEvaluationPlayerId() {
@@ -87,6 +84,6 @@ public class Evaluation {
     }
 
     public void setEvaluationPlayerId(String evaluationPlayerId) {
-        this.evaluationPlayerId = evaluationPlayerId;
+        this.evaluationPlayerId = evaluationPlayerId == null ? null : evaluationPlayerId.trim();
     }
 }

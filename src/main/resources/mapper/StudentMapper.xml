@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lms.dao.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.lms.po.Student">
+    <constructor>
+      <arg column="Id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sclass" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="birthday" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.lms.po.Student">
+    insert into student (Id, name, sclass, 
+      birthday)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sclass,jdbcType=INTEGER}, 
+      #{birthday,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sclass != null">
+        sclass,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sclass != null">
+        #{sclass,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.lms.po.Student">
+    <constructor>
+      <idArg column="student_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clazz_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="student_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="student_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="student_password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="student_sex" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="department_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clazz_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="role_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="studentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clazzNum" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="departmentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="roleId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="studentName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="studentNo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="studentPassword" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="studentSex" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    student_id, clazz_id, student_name, student_no, student_password, student_sex, department_id, 
+    clazz_num, role_id, studentId, clazzNum, departmentId, roleId, studentName, studentNo, 
+    studentPassword, studentSex
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where student_id = #{studentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student
+    where student_id = #{studentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lms.po.Student">
+    insert into student (student_id, clazz_id, student_name, 
+      student_no, student_password, student_sex, 
+      department_id, clazz_num, role_id, 
+      studentId, clazzNum, departmentId, 
+      roleId, studentName, studentNo, 
+      studentPassword, studentSex)
+    values (#{studentId,jdbcType=INTEGER}, #{clazzId,jdbcType=INTEGER}, #{studentName,jdbcType=VARCHAR}, 
+      #{studentNo,jdbcType=VARCHAR}, #{studentPassword,jdbcType=VARCHAR}, #{studentSex,jdbcType=VARCHAR}, 
+      #{departmentId,jdbcType=INTEGER}, #{clazzNum,jdbcType=INTEGER}, #{roleId,jdbcType=VARCHAR}, 
+      #{studentid,jdbcType=INTEGER}, #{clazznum,jdbcType=INTEGER}, #{departmentid,jdbcType=INTEGER}, 
+      #{roleid,jdbcType=VARCHAR}, #{studentname,jdbcType=VARCHAR}, #{studentno,jdbcType=VARCHAR}, 
+      #{studentpassword,jdbcType=VARCHAR}, #{studentsex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        student_id,
+      </if>
+      <if test="clazzId != null">
+        clazz_id,
+      </if>
+      <if test="studentName != null">
+        student_name,
+      </if>
+      <if test="studentNo != null">
+        student_no,
+      </if>
+      <if test="studentPassword != null">
+        student_password,
+      </if>
+      <if test="studentSex != null">
+        student_sex,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="clazzNum != null">
+        clazz_num,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="studentid != null">
+        studentId,
+      </if>
+      <if test="clazznum != null">
+        clazzNum,
+      </if>
+      <if test="departmentid != null">
+        departmentId,
+      </if>
+      <if test="roleid != null">
+        roleId,
+      </if>
+      <if test="studentname != null">
+        studentName,
+      </if>
+      <if test="studentno != null">
+        studentNo,
+      </if>
+      <if test="studentpassword != null">
+        studentPassword,
+      </if>
+      <if test="studentsex != null">
+        studentSex,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzId != null">
+        #{clazzId,jdbcType=INTEGER},
+      </if>
+      <if test="studentName != null">
+        #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentNo != null">
+        #{studentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="studentPassword != null">
+        #{studentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="studentSex != null">
+        #{studentSex,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzNum != null">
+        #{clazzNum,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="clazznum != null">
+        #{clazznum,jdbcType=INTEGER},
+      </if>
+      <if test="departmentid != null">
+        #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentname != null">
+        #{studentname,jdbcType=VARCHAR},
+      </if>
+      <if test="studentno != null">
+        #{studentno,jdbcType=VARCHAR},
+      </if>
+      <if test="studentpassword != null">
+        #{studentpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="studentsex != null">
+        #{studentsex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.Student">
+    update student
+    <set>
+      <if test="clazzId != null">
+        clazz_id = #{clazzId,jdbcType=INTEGER},
+      </if>
+      <if test="studentName != null">
+        student_name = #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentNo != null">
+        student_no = #{studentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="studentPassword != null">
+        student_password = #{studentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="studentSex != null">
+        student_sex = #{studentSex,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzNum != null">
+        clazz_num = #{clazzNum,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        studentId = #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="clazznum != null">
+        clazzNum = #{clazznum,jdbcType=INTEGER},
+      </if>
+      <if test="departmentid != null">
+        departmentId = #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="roleid != null">
+        roleId = #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentname != null">
+        studentName = #{studentname,jdbcType=VARCHAR},
+      </if>
+      <if test="studentno != null">
+        studentNo = #{studentno,jdbcType=VARCHAR},
+      </if>
+      <if test="studentpassword != null">
+        studentPassword = #{studentpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="studentsex != null">
+        studentSex = #{studentsex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where student_id = #{studentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lms.po.Student">
+    update student
+    set clazz_id = #{clazzId,jdbcType=INTEGER},
+      student_name = #{studentName,jdbcType=VARCHAR},
+      student_no = #{studentNo,jdbcType=VARCHAR},
+      student_password = #{studentPassword,jdbcType=VARCHAR},
+      student_sex = #{studentSex,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      clazz_num = #{clazzNum,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=VARCHAR},
+      studentId = #{studentid,jdbcType=INTEGER},
+      clazzNum = #{clazznum,jdbcType=INTEGER},
+      departmentId = #{departmentid,jdbcType=INTEGER},
+      roleId = #{roleid,jdbcType=VARCHAR},
+      studentName = #{studentname,jdbcType=VARCHAR},
+      studentNo = #{studentno,jdbcType=VARCHAR},
+      studentPassword = #{studentpassword,jdbcType=VARCHAR},
+      studentSex = #{studentsex,jdbcType=VARCHAR}
+    where student_id = #{studentId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lms.po.Student">
+    <constructor>
+      <idArg column="student_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clazz_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="student_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="student_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="student_password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="student_sex" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="department_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clazz_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="role_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    student_id, clazz_id, student_name, student_no, student_password, student_sex, department_id, 
+    clazz_num, role_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where student_id = #{studentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student
+    where student_id = #{studentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lms.po.Student">
+    insert into student (student_id, clazz_id, student_name, 
+      student_no, student_password, student_sex, 
+      department_id, clazz_num, role_id
+      )
+    values (#{studentId,jdbcType=INTEGER}, #{clazzId,jdbcType=INTEGER}, #{studentName,jdbcType=VARCHAR}, 
+      #{studentNo,jdbcType=VARCHAR}, #{studentPassword,jdbcType=VARCHAR}, #{studentSex,jdbcType=VARCHAR}, 
+      #{departmentId,jdbcType=INTEGER}, #{clazzNum,jdbcType=INTEGER}, #{roleId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        student_id,
+      </if>
+      <if test="clazzId != null">
+        clazz_id,
+      </if>
+      <if test="studentName != null">
+        student_name,
+      </if>
+      <if test="studentNo != null">
+        student_no,
+      </if>
+      <if test="studentPassword != null">
+        student_password,
+      </if>
+      <if test="studentSex != null">
+        student_sex,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="clazzNum != null">
+        clazz_num,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzId != null">
+        #{clazzId,jdbcType=INTEGER},
+      </if>
+      <if test="studentName != null">
+        #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentNo != null">
+        #{studentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="studentPassword != null">
+        #{studentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="studentSex != null">
+        #{studentSex,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzNum != null">
+        #{clazzNum,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.Student">
+    update student
+    <set>
+      <if test="clazzId != null">
+        clazz_id = #{clazzId,jdbcType=INTEGER},
+      </if>
+      <if test="studentName != null">
+        student_name = #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentNo != null">
+        student_no = #{studentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="studentPassword != null">
+        student_password = #{studentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="studentSex != null">
+        student_sex = #{studentSex,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzNum != null">
+        clazz_num = #{clazzNum,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where student_id = #{studentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lms.po.Student">
+    update student
+    set clazz_id = #{clazzId,jdbcType=INTEGER},
+      student_name = #{studentName,jdbcType=VARCHAR},
+      student_no = #{studentNo,jdbcType=VARCHAR},
+      student_password = #{studentPassword,jdbcType=VARCHAR},
+      student_sex = #{studentSex,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      clazz_num = #{clazzNum,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=VARCHAR}
+    where student_id = #{studentId,jdbcType=INTEGER}
+  </update>
+</mapper>

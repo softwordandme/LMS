@@ -1,20 +1,26 @@
 package com.lms.po;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "Power")
 public class Power {
+    private Integer powerId;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)  //自动增量
-    private Integer powerId;         //权限id 唯一，自增
+    private Integer rloeId;
 
-    private Integer powerIt;         //权限标识
+    private Integer menuId;
 
-    private String powerName;           //权限名
+    private Integer powerIt;
+
+    private String powerName;
+
+    public Power(Integer powerId, Integer rloeId, Integer menuId, Integer powerIt, String powerName) {
+        this.powerId = powerId;
+        this.rloeId = rloeId;
+        this.menuId = menuId;
+        this.powerIt = powerIt;
+        this.powerName = powerName;
+    }
 
     public Power() {
+        super();
     }
 
     public Integer getPowerId() {
@@ -23,6 +29,22 @@ public class Power {
 
     public void setPowerId(Integer powerId) {
         this.powerId = powerId;
+    }
+
+    public Integer getRloeId() {
+        return rloeId;
+    }
+
+    public void setRloeId(Integer rloeId) {
+        this.rloeId = rloeId;
+    }
+
+    public Integer getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
     }
 
     public Integer getPowerIt() {
@@ -38,6 +60,6 @@ public class Power {
     }
 
     public void setPowerName(String powerName) {
-        this.powerName = powerName;
+        this.powerName = powerName == null ? null : powerName.trim();
     }
 }

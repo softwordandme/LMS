@@ -1,75 +1,47 @@
 package com.lms.po;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "Clazz") //指定表名为users  班级表
 public class Clazz {
+    private Integer id;
 
+    private String clazzName;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)  //自动增量
-    private Integer id;         //id
+    private Integer clazzNum;
 
-    private Integer clazzNum;    //班级编号  如 1590008
+    private Integer courseId;
 
-    private Integer department; //系部ID，与系部表连接
-
-    private String clazzName;//班级名称
-
-    private Integer courseId;//课程id
-
-    /**
-     * 教师No
-     */
-    private String teacherNo;
-
-    public String getTeacherNo() {
-        return teacherNo;
-    }
-
-    public void setTeacherNo(String teacherNo) {
-        this.teacherNo = teacherNo;
-    }
-
-    /**
-     * 不写数据
-     */
     private String courseName;
 
-    public Clazz() {
-    }
+    private Integer department;
 
-    public Integer getClazzNum() {
-        return clazzNum;
-    }
+    private String teacherNo;
 
-    public void setClazzNum(Integer clazzNum) {
-        this.clazzNum = clazzNum;
-    }
+    private String clazzname;
 
-    public Integer getDepartment() {
-        return department;
-    }
+    private Integer clazznum;
 
-    public void setDepartment(Integer department) {
-        this.department = department;
-    }
+    private Integer courseid;
 
-    public String getClazzName() {
-        return clazzName;
-    }
+    private String coursename;
 
-    public void setClazzName(String clazzName) {
+    private String teacherno;
+
+    public Clazz(Integer id, String clazzName, Integer clazzNum, Integer courseId, String courseName, Integer department, String teacherNo, String clazzname, Integer clazznum, Integer courseid, String coursename, String teacherno) {
+        this.id = id;
         this.clazzName = clazzName;
-    }
-
-    public Integer getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Integer courseId) {
+        this.clazzNum = clazzNum;
         this.courseId = courseId;
+        this.courseName = courseName;
+        this.department = department;
+        this.teacherNo = teacherNo;
+        this.clazzname = clazzname;
+        this.clazznum = clazznum;
+        this.courseid = courseid;
+        this.coursename = coursename;
+        this.teacherno = teacherno;
+    }
+
+    public Clazz() {
+        super();
     }
 
     public Integer getId() {
@@ -80,11 +52,91 @@ public class Clazz {
         this.id = id;
     }
 
+    public String getClazzName() {
+        return clazzName;
+    }
+
+    public void setClazzName(String clazzName) {
+        this.clazzName = clazzName == null ? null : clazzName.trim();
+    }
+
+    public Integer getClazzNum() {
+        return clazzNum;
+    }
+
+    public void setClazzNum(Integer clazzNum) {
+        this.clazzNum = clazzNum;
+    }
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
     public String getCourseName() {
         return courseName;
     }
 
     public void setCourseName(String courseName) {
-        this.courseName = courseName;
+        this.courseName = courseName == null ? null : courseName.trim();
+    }
+
+    public Integer getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Integer department) {
+        this.department = department;
+    }
+
+    public String getTeacherNo() {
+        return teacherNo;
+    }
+
+    public void setTeacherNo(String teacherNo) {
+        this.teacherNo = teacherNo == null ? null : teacherNo.trim();
+    }
+
+    public String getClazzname() {
+        return clazzname;
+    }
+
+    public void setClazzname(String clazzname) {
+        this.clazzname = clazzname == null ? null : clazzname.trim();
+    }
+
+    public Integer getClazznum() {
+        return clazznum;
+    }
+
+    public void setClazznum(Integer clazznum) {
+        this.clazznum = clazznum;
+    }
+
+    public Integer getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(Integer courseid) {
+        this.courseid = courseid;
+    }
+
+    public String getCoursename() {
+        return coursename;
+    }
+
+    public void setCoursename(String coursename) {
+        this.coursename = coursename == null ? null : coursename.trim();
+    }
+
+    public String getTeacherno() {
+        return teacherno;
+    }
+
+    public void setTeacherno(String teacherno) {
+        this.teacherno = teacherno == null ? null : teacherno.trim();
     }
 }

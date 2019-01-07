@@ -27,7 +27,7 @@ public class SelfMessageService {
      */
     public Student findStudentAll(String studentNo){
             Student student;
-            student = studentDao.findAllByStudentNo(studentNo);
+            student = studentDao.findStudentByStudentNo(studentNo);
             if (student!=null){
                 return student;
             }else{
@@ -97,10 +97,10 @@ public class SelfMessageService {
         String studentS = "学生";
         Integer studentRoleId = roleService.findRoleByRoleName(studentS).getRoleId();
         if (roleId.equals(studentRoleId)){
-            Student student = studentDao.findAllByStudentNo(userId);
+            Student student = studentDao.findStudentByStudentNo(userId);
             if(cOldPassword.equals(student.getStudentPassword())){
                 student.setStudentPassword(cChangPassword);
-                studentDao.save(student);
+                studentDao.editStudentDo(student);
                 return "true";
             }else {
                 //旧密码错误

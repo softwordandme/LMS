@@ -61,7 +61,7 @@ public class LoginController {
         HttpSession session = request.getSession();
         Student ss = loginService.loginStudentFind(userid,password);
         Teacher tt = loginService.loginTeacherFind(userid,password);
-
+        System.out.println("输入的值:"+userid+password);
         if(ss!=null){
             System.out.println(ss.toString());
             session.setAttribute("userId",ss.getStudentNo());

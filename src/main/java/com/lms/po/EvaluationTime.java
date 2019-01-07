@@ -1,39 +1,41 @@
 package com.lms.po;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "EvaluationTime")
 public class EvaluationTime {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer evaluationTimeId;
 
-    /**
-     * 评教类型Id
-     */
     private Integer evaluationTypeId;
 
-    /**
-     * 评教学期的Id ,与term学期表关联
-     */
+    private Date evaluationtimeBg;
+
+    private Date evaluationtimeEn;
+
     private Integer termId;
 
-    //开始评教时间
+    private Date evaluationEnd;
+
     private Date evaluationStart;
 
-    //结束评教时间
-    private Date evaluationEnd;
-    /**
-     * 不用管，借用此字段显示
-     */
     private String roleName;
-    /**
-     * 不用管,借用此字段显示
-     */
+
     private String termName;
+
+    public EvaluationTime(Integer evaluationTimeId, Integer evaluationTypeId, Date evaluationtimeBg, Date evaluationtimeEn, Integer termId, Date evaluationEnd, Date evaluationStart, String roleName, String termName) {
+        this.evaluationTimeId = evaluationTimeId;
+        this.evaluationTypeId = evaluationTypeId;
+        this.evaluationtimeBg = evaluationtimeBg;
+        this.evaluationtimeEn = evaluationtimeEn;
+        this.termId = termId;
+        this.evaluationEnd = evaluationEnd;
+        this.evaluationStart = evaluationStart;
+        this.roleName = roleName;
+        this.termName = termName;
+    }
+
+    public EvaluationTime() {
+        super();
+    }
 
     public Integer getEvaluationTimeId() {
         return evaluationTimeId;
@@ -51,20 +53,28 @@ public class EvaluationTime {
         this.evaluationTypeId = evaluationTypeId;
     }
 
+    public Date getEvaluationtimeBg() {
+        return evaluationtimeBg;
+    }
+
+    public void setEvaluationtimeBg(Date evaluationtimeBg) {
+        this.evaluationtimeBg = evaluationtimeBg;
+    }
+
+    public Date getEvaluationtimeEn() {
+        return evaluationtimeEn;
+    }
+
+    public void setEvaluationtimeEn(Date evaluationtimeEn) {
+        this.evaluationtimeEn = evaluationtimeEn;
+    }
+
     public Integer getTermId() {
         return termId;
     }
 
     public void setTermId(Integer termId) {
         this.termId = termId;
-    }
-
-    public Date getEvaluationStart() {
-        return evaluationStart;
-    }
-
-    public void setEvaluationStart(Date evaluationStart) {
-        this.evaluationStart = evaluationStart;
     }
 
     public Date getEvaluationEnd() {
@@ -75,12 +85,20 @@ public class EvaluationTime {
         this.evaluationEnd = evaluationEnd;
     }
 
+    public Date getEvaluationStart() {
+        return evaluationStart;
+    }
+
+    public void setEvaluationStart(Date evaluationStart) {
+        this.evaluationStart = evaluationStart;
+    }
+
     public String getRoleName() {
         return roleName;
     }
 
     public void setRoleName(String roleName) {
-        this.roleName = roleName;
+        this.roleName = roleName == null ? null : roleName.trim();
     }
 
     public String getTermName() {
@@ -88,6 +106,6 @@ public class EvaluationTime {
     }
 
     public void setTermName(String termName) {
-        this.termName = termName;
+        this.termName = termName == null ? null : termName.trim();
     }
 }

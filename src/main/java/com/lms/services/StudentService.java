@@ -27,7 +27,7 @@ public class StudentService {
      **/
     public Student findStudentAll(String studentNo){
         Student student;
-        student = studentDao.findAllByStudentNo(studentNo);
+        student = studentDao.findStudentByStudentNo(studentNo);
         if (student!=null){
             return student;
         }else{
@@ -38,10 +38,10 @@ public class StudentService {
     /**
      * 添加学生
      * */
-    public Student addStudentDo(Student student){
+    public int addStudentDo(Student student){
         //MD5加密
         student.setStudentPassword(DigestUtils.md5DigestAsHex(student.getStudentPassword().getBytes()));
-        return studentDao.save(student);
+        return studentDao.addStudentDo(student);
     }
     /**
      根据studentId查找信息
@@ -49,8 +49,8 @@ public class StudentService {
     public Student findStudentByStudentId(Integer sutdentId){
         return studentDao.findStudentByStudentId(sutdentId);
     }
-    public  Student editStudentDo(Student student){
-        return  studentDao.save(student);
+    public  int editStudentDo(Student student){
+        return  studentDao.editStudentDo(student);
     }
     /**查询所有记录*/
     public List<Student> findAll(){
@@ -77,6 +77,6 @@ public class StudentService {
     }
 
    public  Student findTeacherByStudentNoWithStudentId(String studentNo,Integer studentId){
-        return studentDao.findTeacherByStudentNoWithStudentId(studentNo,studentId);
+        return studentDao.findStudentByStudentNoWithStudentId(studentNo,studentId);
    }
 }

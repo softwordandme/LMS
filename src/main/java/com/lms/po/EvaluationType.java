@@ -1,27 +1,29 @@
 package com.lms.po;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "EvaluationType")
 public class EvaluationType {
-
-    /**
-     * 评教类型Id
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer evaluationTypeId;
 
-    /**
-     * 评教对象，与role表关联
-     */
     private Integer roleId;
 
-    /**
-    * 状态，0为关闭，1为开启
-    */
     private Integer status;
+
+    public EvaluationType(Integer evaluationTypeId, Integer roleId, Integer status) {
+        this.evaluationTypeId = evaluationTypeId;
+        this.roleId = roleId;
+        this.status = status;
+    }
+
+    public EvaluationType() {
+        super();
+    }
+
+    public Integer getEvaluationTypeId() {
+        return evaluationTypeId;
+    }
+
+    public void setEvaluationTypeId(Integer evaluationTypeId) {
+        this.evaluationTypeId = evaluationTypeId;
+    }
 
     public Integer getRoleId() {
         return roleId;
@@ -37,13 +39,5 @@ public class EvaluationType {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Integer getEvaluationTypeId() {
-        return evaluationTypeId;
-    }
-
-    public void setEvaluationTypeId(Integer evaluationTypeId) {
-        this.evaluationTypeId = evaluationTypeId;
     }
 }

@@ -1,33 +1,35 @@
 package com.lms.po;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "Course") //指定表名为Course 课程表
 public class Course {
+    private Integer courseId;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)  //自动增量
-    private Integer courseId;       //课程id，唯一，自增
+    private String courseName;
 
-    private String courseName;      //课程名称
+    private String teacherNo;
 
-    private String teacherNo;      //教师的工号,关联教师表
+    private Integer termId;
 
-    /**
-     * 课程学期，格式为String 2017-2018学年,第一学期
-     */
-    private Integer  termId;
+    private Integer courseid;
 
-    public Integer getTermId() {
-        return termId;
-    }
+    private String coursename;
 
-    public void setTermId(Integer termId) {
+    private String teacherno;
+
+    private Integer termid;
+
+    public Course(Integer courseId, String courseName, String teacherNo, Integer termId, Integer courseid, String coursename, String teacherno, Integer termid) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.teacherNo = teacherNo;
         this.termId = termId;
+        this.courseid = courseid;
+        this.coursename = coursename;
+        this.teacherno = teacherno;
+        this.termid = termid;
     }
 
     public Course() {
+        super();
     }
 
     public Integer getCourseId() {
@@ -43,7 +45,7 @@ public class Course {
     }
 
     public void setCourseName(String courseName) {
-        this.courseName = courseName;
+        this.courseName = courseName == null ? null : courseName.trim();
     }
 
     public String getTeacherNo() {
@@ -51,8 +53,46 @@ public class Course {
     }
 
     public void setTeacherNo(String teacherNo) {
-        this.teacherNo = teacherNo;
+        this.teacherNo = teacherNo == null ? null : teacherNo.trim();
     }
 
+    public Integer getTermId() {
+        return termId;
+    }
 
+    public void setTermId(Integer termId) {
+        this.termId = termId;
+    }
+
+    public Integer getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(Integer courseid) {
+        this.courseid = courseid;
+    }
+
+    public String getCoursename() {
+        return coursename;
+    }
+
+    public void setCoursename(String coursename) {
+        this.coursename = coursename == null ? null : coursename.trim();
+    }
+
+    public String getTeacherno() {
+        return teacherno;
+    }
+
+    public void setTeacherno(String teacherno) {
+        this.teacherno = teacherno == null ? null : teacherno.trim();
+    }
+
+    public Integer getTermid() {
+        return termid;
+    }
+
+    public void setTermid(Integer termid) {
+        this.termid = termid;
+    }
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lms.dao.StudentDao">
+    <select id="findStudentByStudentNo" resultType="com.lms.dao.StudentDao">
+        select * from student where student_no=#{studentNo}
+    </select>
+
+    <select id="findStudentByStudentId" resultType="com.lms.dao.StudentDao">
+        select * from student where student_id=#{studentId}
+    </select>
+
+    <select id="findAll" resultType="com.lms.dao.StudentDao">
+        select * from student
+    </select>
+
+    <select id="findStudentByStudentNoWithStudentId" resultType="com.lms.dao.StudentDao">
+        select * from student where student_no = #{studentNo} and student_id != #{studentId}
+    </select>
+
+    <select id="deleteStudentByStudentId" resultType="int">
+        delete * from student where student_id=#{studentId}
+    </select>
+
+    <select id="countStudentsByClazzNum" resultType="int">
+        delete count(*) from student where student_num=#{studentNum}
+    </select>
+
+    <select id="findStudentByStudentNoWithStudentId" resultType="com.lms.dao.StudentDao">
+        delete * from student where student_no=#{studentNo} and
+    </select>
+
+    <select id="addStudent" resultType="int">
+        insert into student values where student_no=#{studentNo} and
+    </select>
+
+    <select id="editStudentDo" resultType="int">
+        insert into student values where student_no=#{studentNo} and
+    </select>
+
+
+
+
+
+
+</mapper>

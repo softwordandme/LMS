@@ -1,26 +1,48 @@
 package com.lms.dao;
 
-import com.lms.po.Student;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Repository
-public interface StudentDao extends JpaRepository<Student,Integer> {
-    /**
-    通过studentNo（学号/帐号）查询学生所有信息
-    */
-    Student findAllByStudentNo(String studentNo);
+/**
+ * Demo class
+ *
+ * @author zz
+ * @date 2019/1/1
+ */
+public interface StudentDao  {
 
+    /**
+     * 通过studentNo（学号/帐号）查询学生所有信息
+     * @param  通过studentId 学生Id
+     * @return Student
+     */
     Student findStudentByStudentId(Integer studentId);
 
-    @Override
+
+    /**
+     * 增加学生
+     * @param student 学生
+     * @return int
+     * */
+    int addStudentDo(Student student);
+
+    int editStudentDo(Student student);
+
+    /**
+     * 根据学号查询学生
+     * @param studentNo 学号
+     * @return List<Student>
+     * */
+    Student findStudentByStudentNo(String studentNo);
+
     List<Student> findAll();
 
-    @Transactional
+    /**
+     * 根据学生ID删除学生
+     * @param  studentId 学生id
+     * @return Integer
+     */
     Integer deleteStudentByStudentId(Integer studentId);
 
     /**
@@ -30,12 +52,7 @@ public interface StudentDao extends JpaRepository<Student,Integer> {
      */
     Integer countStudentsByClazzNum(Integer clazzNum);
 
-    /**
-     * 根据学号查询学生
-     * @param studentNo 学号
-     * @return List<Student>
-     * */
-    Student findStudentByStudentNo(String studentNo);
+
 
     /**
      * 查询Student
@@ -44,5 +61,5 @@ public interface StudentDao extends JpaRepository<Student,Integer> {
      * @return Teacher
      * */
     @Query(value = "select * from student where student_no = ?1 and student_id != ?2",nativeQuery = true)
-    Student findTeacherByStudentNoWithStudentId(String studentNo, Integer studentId);
+    Student findStudentByStudentNoWithStudentId(String studentNo, Integer studentId);
 }

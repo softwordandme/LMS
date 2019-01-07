@@ -76,7 +76,7 @@ public class ClazzService {
     * 根据id查找Clazz
      */
     public  Clazz findClazzById(Integer id){
-            return clazzDao.findClazzById(id);
+            return clazzDao.selectByPrimaryKey(id);
     }
     /**
     * 更新Clazz信息

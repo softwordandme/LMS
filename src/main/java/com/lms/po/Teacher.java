@@ -1,31 +1,35 @@
 package com.lms.po;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "Teacher")  //教师表
 public class Teacher {
+    private Integer teacherId;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)  //自动增量
-    private Integer teacherId;          //教师ID，唯一，自增
+    private Integer departmentId;
 
-    private String teacherNo;           //教师工号
+    private String teacherName;
 
-    private String teacherName;         //教师名字
+    private String teacherNo;
 
-    private String teacherPassword;     //教师密码
+    private String teacherPassword;
 
-    private String teacherSex;          //教师性别，直接存男 女
+    private String teacherSex;
 
-    private String teacherStatus;       //教师状态  直接存 在职，离职
+    private String teacherStatus;
 
-    private Integer departmentId;       //部门ID，与系部表连接
+    private String roleId;
 
-    private String roleId;             //角色ID  ，与角色表连接
-
+    public Teacher(Integer teacherId, Integer departmentId, String teacherName, String teacherNo, String teacherPassword, String teacherSex, String teacherStatus, String roleId) {
+        this.teacherId = teacherId;
+        this.departmentId = departmentId;
+        this.teacherName = teacherName;
+        this.teacherNo = teacherNo;
+        this.teacherPassword = teacherPassword;
+        this.teacherSex = teacherSex;
+        this.teacherStatus = teacherStatus;
+        this.roleId = roleId;
+    }
 
     public Teacher() {
+        super();
     }
 
     public Integer getTeacherId() {
@@ -36,46 +40,6 @@ public class Teacher {
         this.teacherId = teacherId;
     }
 
-    public String getTeacherNo() {
-        return teacherNo;
-    }
-
-    public void setTeacherNo(String teacherNo) {
-        this.teacherNo = teacherNo;
-    }
-
-    public String getTeacherName() {
-        return teacherName;
-    }
-
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
-    }
-
-    public String getTeacherPassword() {
-        return teacherPassword;
-    }
-
-    public void setTeacherPassword(String teacherPassword) {
-        this.teacherPassword = teacherPassword;
-    }
-
-    public String getTeacherSex() {
-        return teacherSex;
-    }
-
-    public void setTeacherSex(String teacherSex) {
-        this.teacherSex = teacherSex;
-    }
-
-    public String getTeacherStatus() {
-        return teacherStatus;
-    }
-
-    public void setTeacherStatus(String teacherStatus) {
-        this.teacherStatus = teacherStatus;
-    }
-
     public Integer getDepartmentId() {
         return departmentId;
     }
@@ -84,11 +48,51 @@ public class Teacher {
         this.departmentId = departmentId;
     }
 
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName == null ? null : teacherName.trim();
+    }
+
+    public String getTeacherNo() {
+        return teacherNo;
+    }
+
+    public void setTeacherNo(String teacherNo) {
+        this.teacherNo = teacherNo == null ? null : teacherNo.trim();
+    }
+
+    public String getTeacherPassword() {
+        return teacherPassword;
+    }
+
+    public void setTeacherPassword(String teacherPassword) {
+        this.teacherPassword = teacherPassword == null ? null : teacherPassword.trim();
+    }
+
+    public String getTeacherSex() {
+        return teacherSex;
+    }
+
+    public void setTeacherSex(String teacherSex) {
+        this.teacherSex = teacherSex == null ? null : teacherSex.trim();
+    }
+
+    public String getTeacherStatus() {
+        return teacherStatus;
+    }
+
+    public void setTeacherStatus(String teacherStatus) {
+        this.teacherStatus = teacherStatus == null ? null : teacherStatus.trim();
+    }
+
     public String getRoleId() {
         return roleId;
     }
 
     public void setRoleId(String roleId) {
-        this.roleId = roleId;
+        this.roleId = roleId == null ? null : roleId.trim();
     }
 }

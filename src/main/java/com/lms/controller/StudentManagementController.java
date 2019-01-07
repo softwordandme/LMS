@@ -65,8 +65,8 @@ public class StudentManagementController {
         if(student1!=null){
             return "2";
         }
-        Student st= studentService.addStudentDo(student);
-        if (st!=null){
+        int st= studentService.addStudentDo(student);
+        if (st!=0){
             return "1";
         }
         else {
@@ -93,8 +93,8 @@ public class StudentManagementController {
         if(student1!=null){
             return "2";
         }
-        Student st=studentService.editStudentDo(student);
-        if (st!=null){
+        int st=studentService.editStudentDo(student);
+        if (st!=0){
             return "1";
         }else {
             return "0";

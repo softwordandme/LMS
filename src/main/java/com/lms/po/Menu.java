@@ -1,28 +1,32 @@
 package com.lms.po;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "Menu")       //菜单表
 public class Menu {
+    private Integer menuId;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)  //自动增量
-    private Integer menuId;             //菜单Id  唯一自增
+    private String menuName;
 
-    private Integer menuNum;            //菜单排序，数字小的在前面
+    private Integer menuNum;
 
-    private String menuName;            //菜单名字
+    private Integer menuParentId;
 
-    private Integer menuParentId;        //菜单父ID
+    private Integer menuPower;
 
-    private String menuUrl;             //菜单地址
+    private String menuUrl;
 
-    private Integer menuPower;          //菜单权限      1,2,3,4,5分别为学生，老师，教研室，系主任，管理员
+    private String pname;
 
-    private String pname;               //放着耍
+    public Menu(Integer menuId, String menuName, Integer menuNum, Integer menuParentId, Integer menuPower, String menuUrl, String pname) {
+        this.menuId = menuId;
+        this.menuName = menuName;
+        this.menuNum = menuNum;
+        this.menuParentId = menuParentId;
+        this.menuPower = menuPower;
+        this.menuUrl = menuUrl;
+        this.pname = pname;
+    }
 
     public Menu() {
+        super();
     }
 
     public Integer getMenuId() {
@@ -33,20 +37,20 @@ public class Menu {
         this.menuId = menuId;
     }
 
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName == null ? null : menuName.trim();
+    }
+
     public Integer getMenuNum() {
         return menuNum;
     }
 
     public void setMenuNum(Integer menuNum) {
         this.menuNum = menuNum;
-    }
-
-    public String getMenuName() {
-        return menuName;
-    }
-
-    public void setMenuName(String menuName) {
-        this.menuName = menuName;
     }
 
     public Integer getMenuParentId() {
@@ -57,14 +61,6 @@ public class Menu {
         this.menuParentId = menuParentId;
     }
 
-    public String getMenuUrl() {
-        return menuUrl;
-    }
-
-    public void setMenuUrl(String menuUrl) {
-        this.menuUrl = menuUrl;
-    }
-
     public Integer getMenuPower() {
         return menuPower;
     }
@@ -73,11 +69,19 @@ public class Menu {
         this.menuPower = menuPower;
     }
 
+    public String getMenuUrl() {
+        return menuUrl;
+    }
+
+    public void setMenuUrl(String menuUrl) {
+        this.menuUrl = menuUrl == null ? null : menuUrl.trim();
+    }
+
     public String getPname() {
         return pname;
     }
 
     public void setPname(String pname) {
-        this.pname = pname;
+        this.pname = pname == null ? null : pname.trim();
     }
 }

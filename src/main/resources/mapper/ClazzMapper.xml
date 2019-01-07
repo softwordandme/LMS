@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lms.dao.ClazzDao">
+  <resultMap id="BaseResultMap" type="com.lms.po.Clazz">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clazz_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="clazz_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="course_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="course_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="department" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="teacher_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="clazzName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="clazzNum" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="courseId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="courseName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="teacherNo" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, clazz_name, clazz_num, course_id, course_name, department, teacher_no, clazzName, 
+    clazzNum, courseId, courseName, teacherNo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clazz
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from clazz
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lms.po.Clazz">
+    insert into clazz (id, clazz_name, clazz_num, 
+      course_id, course_name, department, 
+      teacher_no, clazzName, clazzNum, 
+      courseId, courseName, teacherNo
+      )
+    values (#{id,jdbcType=INTEGER}, #{clazzName,jdbcType=VARCHAR}, #{clazzNum,jdbcType=INTEGER}, 
+      #{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{department,jdbcType=INTEGER}, 
+      #{teacherNo,jdbcType=VARCHAR}, #{clazzname,jdbcType=VARCHAR}, #{clazznum,jdbcType=INTEGER}, 
+      #{courseid,jdbcType=INTEGER}, #{coursename,jdbcType=VARCHAR}, #{teacherno,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.Clazz">
+    insert into clazz
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="clazzName != null">
+        clazz_name,
+      </if>
+      <if test="clazzNum != null">
+        clazz_num,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="courseName != null">
+        course_name,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="teacherNo != null">
+        teacher_no,
+      </if>
+      <if test="clazzname != null">
+        clazzName,
+      </if>
+      <if test="clazznum != null">
+        clazzNum,
+      </if>
+      <if test="courseid != null">
+        courseId,
+      </if>
+      <if test="coursename != null">
+        courseName,
+      </if>
+      <if test="teacherno != null">
+        teacherNo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="clazzName != null">
+        #{clazzName,jdbcType=VARCHAR},
+      </if>
+      <if test="clazzNum != null">
+        #{clazzNum,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=INTEGER},
+      </if>
+      <if test="teacherNo != null">
+        #{teacherNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clazzname != null">
+        #{clazzname,jdbcType=VARCHAR},
+      </if>
+      <if test="clazznum != null">
+        #{clazznum,jdbcType=INTEGER},
+      </if>
+      <if test="courseid != null">
+        #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="coursename != null">
+        #{coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherno != null">
+        #{teacherno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.Clazz">
+    update clazz
+    <set>
+      <if test="clazzName != null">
+        clazz_name = #{clazzName,jdbcType=VARCHAR},
+      </if>
+      <if test="clazzNum != null">
+        clazz_num = #{clazzNum,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null">
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=INTEGER},
+      </if>
+      <if test="teacherNo != null">
+        teacher_no = #{teacherNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clazzname != null">
+        clazzName = #{clazzname,jdbcType=VARCHAR},
+      </if>
+      <if test="clazznum != null">
+        clazzNum = #{clazznum,jdbcType=INTEGER},
+      </if>
+      <if test="courseid != null">
+        courseId = #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="coursename != null">
+        courseName = #{coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherno != null">
+        teacherNo = #{teacherno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lms.po.Clazz">
+    update clazz
+    set clazz_name = #{clazzName,jdbcType=VARCHAR},
+      clazz_num = #{clazzNum,jdbcType=INTEGER},
+      course_id = #{courseId,jdbcType=INTEGER},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      department = #{department,jdbcType=INTEGER},
+      teacher_no = #{teacherNo,jdbcType=VARCHAR},
+      clazzName = #{clazzname,jdbcType=VARCHAR},
+      clazzNum = #{clazznum,jdbcType=INTEGER},
+      courseId = #{courseid,jdbcType=INTEGER},
+      courseName = #{coursename,jdbcType=VARCHAR},
+      teacherNo = #{teacherno,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lms.po.Clazz">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clazz_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="clazz_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="course_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="course_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="department" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="teacher_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, clazz_name, clazz_num, course_id, course_name, department, teacher_no
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clazz
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from clazz
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lms.po.Clazz">
+    insert into clazz (id, clazz_name, clazz_num, 
+      course_id, course_name, department, 
+      teacher_no)
+    values (#{id,jdbcType=INTEGER}, #{clazzName,jdbcType=VARCHAR}, #{clazzNum,jdbcType=INTEGER}, 
+      #{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{department,jdbcType=INTEGER}, 
+      #{teacherNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.Clazz">
+    insert into clazz
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="clazzName != null">
+        clazz_name,
+      </if>
+      <if test="clazzNum != null">
+        clazz_num,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="courseName != null">
+        course_name,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="teacherNo != null">
+        teacher_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="clazzName != null">
+        #{clazzName,jdbcType=VARCHAR},
+      </if>
+      <if test="clazzNum != null">
+        #{clazzNum,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=INTEGER},
+      </if>
+      <if test="teacherNo != null">
+        #{teacherNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.Clazz">
+    update clazz
+    <set>
+      <if test="clazzName != null">
+        clazz_name = #{clazzName,jdbcType=VARCHAR},
+      </if>
+      <if test="clazzNum != null">
+        clazz_num = #{clazzNum,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null">
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=INTEGER},
+      </if>
+      <if test="teacherNo != null">
+        teacher_no = #{teacherNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lms.po.Clazz">
+    update clazz
+    set clazz_name = #{clazzName,jdbcType=VARCHAR},
+      clazz_num = #{clazzNum,jdbcType=INTEGER},
+      course_id = #{courseId,jdbcType=INTEGER},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      department = #{department,jdbcType=INTEGER},
+      teacher_no = #{teacherNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findAllByClazzNum" parameterType="com.lms.po.Clazz">
+    select * from clazz where clazz_num= #{clazzNum,jdbcType=INTEGER}
+  </select>
+
+  <select id="findClazzAllByClazzNum" parameterType="com.lms.po.Clazz">
+    select * from clazz where clazz_num= #{clazzNum,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="com.lms.po.Clazz" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from clazz
+    where clazzNum = #{clazzNum,jdbcType=INTEGER} AND courseId =#{courseId,jdbcType=INTEGER}
+  </select>
+
+  <select id="findClazzesByCourseId" parameterType="com.lms.po.Clazz">
+    select * from clazz where courseId =#{courseId,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteAllByCourseId" parameterType="java.lang.Integer">
+    delete from clazz
+    where courseId =#{courseId,jdbcType=INTEGER}
+  </delete>
+
+  <select id="findFirstByClazzNum" parameterType="com.lms.po.Clazz">
+    select * from clazz where clazzNum = #{clazzNum,jdbcType=INTEGER} limit 1,1
+  </select>
+
+  <select id="findFirstByClazzNum" parameterType="com.lms.po.Clazz">
+    select * from clazz where clazzNum = #{clazzNum,jdbcType=INTEGER} limit 1,1
+  </select>
+
+
+
+
+</mapper>

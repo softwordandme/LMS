@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lms.dao.EvaluationMapper">
+  <resultMap id="BaseResultMap" type="com.lms.po.Evaluation">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="score" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="evaluation_trem_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="course_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clazz_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="evaluation_judges_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="evaluation_player_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, score, evaluation_trem_id, course_id, clazz_num, evaluation_judges_id, evaluation_player_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from evaluation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from evaluation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lms.po.Evaluation">
+    insert into evaluation (id, score, evaluation_trem_id, 
+      course_id, clazz_num, evaluation_judges_id, 
+      evaluation_player_id)
+    values (#{id,jdbcType=INTEGER}, #{score,jdbcType=DECIMAL}, #{evaluationTremId,jdbcType=INTEGER}, 
+      #{courseId,jdbcType=INTEGER}, #{clazzNum,jdbcType=VARCHAR}, #{evaluationJudgesId,jdbcType=VARCHAR}, 
+      #{evaluationPlayerId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.Evaluation">
+    insert into evaluation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="evaluationTremId != null">
+        evaluation_trem_id,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="clazzNum != null">
+        clazz_num,
+      </if>
+      <if test="evaluationJudgesId != null">
+        evaluation_judges_id,
+      </if>
+      <if test="evaluationPlayerId != null">
+        evaluation_player_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluationTremId != null">
+        #{evaluationTremId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzNum != null">
+        #{clazzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationJudgesId != null">
+        #{evaluationJudgesId,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationPlayerId != null">
+        #{evaluationPlayerId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.Evaluation">
+    update evaluation
+    <set>
+      <if test="score != null">
+        score = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluationTremId != null">
+        evaluation_trem_id = #{evaluationTremId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzNum != null">
+        clazz_num = #{clazzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationJudgesId != null">
+        evaluation_judges_id = #{evaluationJudgesId,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationPlayerId != null">
+        evaluation_player_id = #{evaluationPlayerId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lms.po.Evaluation">
+    update evaluation
+    set score = #{score,jdbcType=DECIMAL},
+      evaluation_trem_id = #{evaluationTremId,jdbcType=INTEGER},
+      course_id = #{courseId,jdbcType=INTEGER},
+      clazz_num = #{clazzNum,jdbcType=VARCHAR},
+      evaluation_judges_id = #{evaluationJudgesId,jdbcType=VARCHAR},
+      evaluation_player_id = #{evaluationPlayerId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lms.po.Evaluation">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="score" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="evaluation_trem_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="course_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clazz_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="evaluation_judges_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="evaluation_player_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="clazzNum" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="courseId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="evaluationJudgesId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="evaluationPlayerId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="evaluationTremId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, score, evaluation_trem_id, course_id, clazz_num, evaluation_judges_id, evaluation_player_id, 
+    clazzNum, courseId, evaluationJudgesId, evaluationPlayerId, evaluationTremId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from evaluation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from evaluation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lms.po.Evaluation">
+    insert into evaluation (id, score, evaluation_trem_id, 
+      course_id, clazz_num, evaluation_judges_id, 
+      evaluation_player_id, clazzNum, courseId, 
+      evaluationJudgesId, evaluationPlayerId, 
+      evaluationTremId)
+    values (#{id,jdbcType=INTEGER}, #{score,jdbcType=DECIMAL}, #{evaluationTremId,jdbcType=INTEGER}, 
+      #{courseId,jdbcType=INTEGER}, #{clazzNum,jdbcType=VARCHAR}, #{evaluationJudgesId,jdbcType=VARCHAR}, 
+      #{evaluationPlayerId,jdbcType=VARCHAR}, #{clazznum,jdbcType=INTEGER}, #{courseid,jdbcType=INTEGER}, 
+      #{evaluationjudgesid,jdbcType=VARCHAR}, #{evaluationplayerid,jdbcType=VARCHAR}, 
+      #{evaluationtremid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.Evaluation">
+    insert into evaluation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="evaluationTremId != null">
+        evaluation_trem_id,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="clazzNum != null">
+        clazz_num,
+      </if>
+      <if test="evaluationJudgesId != null">
+        evaluation_judges_id,
+      </if>
+      <if test="evaluationPlayerId != null">
+        evaluation_player_id,
+      </if>
+      <if test="clazznum != null">
+        clazzNum,
+      </if>
+      <if test="courseid != null">
+        courseId,
+      </if>
+      <if test="evaluationjudgesid != null">
+        evaluationJudgesId,
+      </if>
+      <if test="evaluationplayerid != null">
+        evaluationPlayerId,
+      </if>
+      <if test="evaluationtremid != null">
+        evaluationTremId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluationTremId != null">
+        #{evaluationTremId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzNum != null">
+        #{clazzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationJudgesId != null">
+        #{evaluationJudgesId,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationPlayerId != null">
+        #{evaluationPlayerId,jdbcType=VARCHAR},
+      </if>
+      <if test="clazznum != null">
+        #{clazznum,jdbcType=INTEGER},
+      </if>
+      <if test="courseid != null">
+        #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationjudgesid != null">
+        #{evaluationjudgesid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationplayerid != null">
+        #{evaluationplayerid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationtremid != null">
+        #{evaluationtremid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.Evaluation">
+    update evaluation
+    <set>
+      <if test="score != null">
+        score = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluationTremId != null">
+        evaluation_trem_id = #{evaluationTremId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzNum != null">
+        clazz_num = #{clazzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationJudgesId != null">
+        evaluation_judges_id = #{evaluationJudgesId,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationPlayerId != null">
+        evaluation_player_id = #{evaluationPlayerId,jdbcType=VARCHAR},
+      </if>
+      <if test="clazznum != null">
+        clazzNum = #{clazznum,jdbcType=INTEGER},
+      </if>
+      <if test="courseid != null">
+        courseId = #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationjudgesid != null">
+        evaluationJudgesId = #{evaluationjudgesid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationplayerid != null">
+        evaluationPlayerId = #{evaluationplayerid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationtremid != null">
+        evaluationTremId = #{evaluationtremid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lms.po.Evaluation">
+    update evaluation
+    set score = #{score,jdbcType=DECIMAL},
+      evaluation_trem_id = #{evaluationTremId,jdbcType=INTEGER},
+      course_id = #{courseId,jdbcType=INTEGER},
+      clazz_num = #{clazzNum,jdbcType=VARCHAR},
+      evaluation_judges_id = #{evaluationJudgesId,jdbcType=VARCHAR},
+      evaluation_player_id = #{evaluationPlayerId,jdbcType=VARCHAR},
+      clazzNum = #{clazznum,jdbcType=INTEGER},
+      courseId = #{courseid,jdbcType=INTEGER},
+      evaluationJudgesId = #{evaluationjudgesid,jdbcType=VARCHAR},
+      evaluationPlayerId = #{evaluationplayerid,jdbcType=VARCHAR},
+      evaluationTremId = #{evaluationtremid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -35,7 +35,7 @@ public class EvaluationService {
 
         if (courseId != null){
             //获取评教人
-            Student student = studentDao.findAllByStudentNo(evaluationJudgesId);
+            Student student = studentDao.findStudentByStudentNo(evaluationJudgesId);
 
             Integer clazzNum = student.getClazzNum();
             evaluation.setClazzNum(clazzNum);

@@ -1,23 +1,23 @@
 package com.lms.po;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "Role")       //角色表
 public class Role {
+    private Integer roleId;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)  //自动增量
-    private Integer roleId;         //角色id 唯一，自增
+    private String roleName;
 
-    private String roleName;        //角色名称  学生，教师，系主任，教研室，管理员，教师管理员，教研室管理员，系主任管理员，教研室系主任管理员
+    private String rolePower;
 
-    private String rolePower;       //存菜单id
+    private String powerName;
 
-    private String powerName;       //你们不管
-
+    public Role(Integer roleId, String roleName, String rolePower, String powerName) {
+        this.roleId = roleId;
+        this.roleName = roleName;
+        this.rolePower = rolePower;
+        this.powerName = powerName;
+    }
 
     public Role() {
+        super();
     }
 
     public Integer getRoleId() {
@@ -33,7 +33,7 @@ public class Role {
     }
 
     public void setRoleName(String roleName) {
-        this.roleName = roleName;
+        this.roleName = roleName == null ? null : roleName.trim();
     }
 
     public String getRolePower() {
@@ -41,7 +41,7 @@ public class Role {
     }
 
     public void setRolePower(String rolePower) {
-        this.rolePower = rolePower;
+        this.rolePower = rolePower == null ? null : rolePower.trim();
     }
 
     public String getPowerName() {
@@ -49,6 +49,6 @@ public class Role {
     }
 
     public void setPowerName(String powerName) {
-        this.powerName = powerName;
+        this.powerName = powerName == null ? null : powerName.trim();
     }
 }

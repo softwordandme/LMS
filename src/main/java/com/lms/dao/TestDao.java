@@ -1,7 +1,5 @@
 package com.lms.dao;
 
-import com.lms.po.Clazz;
-
 import java.util.List;
 
 /**
