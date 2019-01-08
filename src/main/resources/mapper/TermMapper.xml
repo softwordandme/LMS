@@ -75,12 +75,10 @@
       <idArg column="term_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="term_name" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="termId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="termName" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    term_id, term_name, status, termId, termName
+    term_id, term_name, status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -93,10 +91,10 @@
     where term_id = #{termId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.lms.po.Term">
-    insert into term (term_id, term_name, status, 
-      termId, termName)
-    values (#{termId,jdbcType=INTEGER}, #{termName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{termid,jdbcType=INTEGER}, #{termname,jdbcType=VARCHAR})
+    insert into term (term_id, term_name, status
+      )
+    values (#{termId,jdbcType=INTEGER}, #{termName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lms.po.Term">
     insert into term
@@ -110,12 +108,6 @@
       <if test="status != null">
         status,
       </if>
-      <if test="termid != null">
-        termId,
-      </if>
-      <if test="termname != null">
-        termName,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="termId != null">
@@ -126,12 +118,6 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
-      </if>
-      <if test="termid != null">
-        #{termid,jdbcType=INTEGER},
-      </if>
-      <if test="termname != null">
-        #{termname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -144,21 +130,13 @@
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="termid != null">
-        termId = #{termid,jdbcType=INTEGER},
-      </if>
-      <if test="termname != null">
-        termName = #{termname,jdbcType=VARCHAR},
-      </if>
     </set>
     where term_id = #{termId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lms.po.Term">
     update term
     set term_name = #{termName,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      termId = #{termid,jdbcType=INTEGER},
-      termName = #{termname,jdbcType=VARCHAR}
+      status = #{status,jdbcType=INTEGER}
     where term_id = #{termId,jdbcType=INTEGER}
   </update>
 </mapper>

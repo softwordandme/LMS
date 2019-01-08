@@ -15,17 +15,7 @@ public class Clazz {
 
     private String teacherNo;
 
-    private String clazzname;
-
-    private Integer clazznum;
-
-    private Integer courseid;
-
-    private String coursename;
-
-    private String teacherno;
-
-    public Clazz(Integer id, String clazzName, Integer clazzNum, Integer courseId, String courseName, Integer department, String teacherNo, String clazzname, Integer clazznum, Integer courseid, String coursename, String teacherno) {
+    public Clazz(Integer id, String clazzName, Integer clazzNum, Integer courseId, String courseName, Integer department, String teacherNo) {
         this.id = id;
         this.clazzName = clazzName;
         this.clazzNum = clazzNum;
@@ -33,11 +23,6 @@ public class Clazz {
         this.courseName = courseName;
         this.department = department;
         this.teacherNo = teacherNo;
-        this.clazzname = clazzname;
-        this.clazznum = clazznum;
-        this.courseid = courseid;
-        this.coursename = coursename;
-        this.teacherno = teacherno;
     }
 
     public Clazz() {
@@ -98,45 +83,5 @@ public class Clazz {
 
     public void setTeacherNo(String teacherNo) {
         this.teacherNo = teacherNo == null ? null : teacherNo.trim();
-    }
-
-    public String getClazzname() {
-        return clazzname;
-    }
-
-    public void setClazzname(String clazzname) {
-        this.clazzname = clazzname == null ? null : clazzname.trim();
-    }
-
-    public Integer getClazznum() {
-        return clazznum;
-    }
-
-    public void setClazznum(Integer clazznum) {
-        this.clazznum = clazznum;
-    }
-
-    public Integer getCourseid() {
-        return courseid;
-    }
-
-    public void setCourseid(Integer courseid) {
-        this.courseid = courseid;
-    }
-
-    public String getCoursename() {
-        return coursename;
-    }
-
-    public void setCoursename(String coursename) {
-        this.coursename = coursename == null ? null : coursename.trim();
-    }
-
-    public String getTeacherno() {
-        return teacherno;
-    }
-
-    public void setTeacherno(String teacherno) {
-        this.teacherno = teacherno == null ? null : teacherno.trim();
     }
 }

@@ -1,11 +1,33 @@
 package com.lms.dao;
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.lms.po.Power;
 
-@Repository
-public interface PowerDao extends JpaRepository<Power,Integer> {
+import java.util.List;
 
-       Power findPowerByPowerIt(Integer power);
+/**
+ * PowerDao interface
+ *
+ * @author zz
+ * @date 2019
+ */
+public interface PowerDao{
+       /**
+        * 查询所有
+        * @return List<Power>
+        */
+       List<Power> findAll();
+
+
+       int deleteByPrimaryKey(Integer powerId);
+
+       int insert(Power record);
+
+       int insertSelective(Power record);
+
+       Power selectByPrimaryKey(Integer powerId);
+
+       int updateByPrimaryKeySelective(Power record);
+
+       int updateByPrimaryKey(Power record);
 }

@@ -1,14 +1,26 @@
 package com.lms.dao;
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.lms.po.Department;
 
-@Repository
-public interface DepartmentDao extends JpaRepository<Department,Integer> {
-    Department findAllByDepartmentId(Integer departmentId);
-    Department findDepartmentByDepartmentId(Integer departmentId);
+import java.util.List;
+
+public interface DepartmentDao {
 
     void deleteDepartmentsByParentId(Integer parentId);
+
+    int deleteByPrimaryKey(Integer departmentId);
+
+    int insert(Department record);
+
+    int insertSelective(Department record);
+
+    Department selectByPrimaryKey(Integer departmentId);
+
+    int updateByPrimaryKeySelective(Department record);
+
+    int updateByPrimaryKey(Department record);
+
+    List<Department> findAll();
 
 }

@@ -21,20 +21,20 @@ public class EvaluationTimeService {
     /*根据EvaluationTimeId找对应EvaluationTime的信息*/
     public EvaluationTime findEvaluationTimeByEvaluationTimeId(Integer evaluationTimeId){
         EvaluationTime evaluationTime;
-        evaluationTime = evaluationTimeDao.findEvaluationTimeByEvaluationTimeId(evaluationTimeId);
+        evaluationTime = evaluationTimeDao.selectByPrimaryKey(evaluationTimeId);
         return evaluationTime;
     }
     /*新增EvaluationTimeManagement*/
-    public EvaluationTime addEvaluation(EvaluationTime evaluationTime){
-        return evaluationTimeDao.save(evaluationTime);
+    public int addEvaluation(EvaluationTime evaluationTime){
+        return evaluationTimeDao.insert(evaluationTime);
     }
     /*修改EvaluationTimeManagement*/
-    public EvaluationTime updateEvaluation(EvaluationTime evaluationTime){
-        return evaluationTimeDao.save(evaluationTime);
+    public int updateEvaluation(EvaluationTime evaluationTime){
+        return evaluationTimeDao.updateByPrimaryKey(evaluationTime);
     }
     /*删除EvaluationTimeManagement*/
     @Transactional
     public Integer deleteEvaluationTime(Integer evaluationTimeId){
-        return evaluationTimeDao.deleteEvaluationTimeByEvaluationTimeId(evaluationTimeId);
+        return evaluationTimeDao.deleteByPrimaryKey(evaluationTimeId);
     }
 }

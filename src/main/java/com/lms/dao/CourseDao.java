@@ -1,31 +1,48 @@
 package com.lms.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.lms.po.Course;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-@Repository
-public interface CourseDao extends JpaRepository<Course,Integer> {
+/**
+ * Demo class
+ *
+ * @author zz
+ * @date 2019
+ */
+public interface CourseDao{
+
+    int deleteByPrimaryKey(Integer courseId);
+
+    int insert(Course record);
+
+    int insertSelective(Course record);
+
+    Course selectByPrimaryKey(Integer courseId);
+
+    int updateByPrimaryKeySelective(Course record);
+
+    int updateByPrimaryKey(Course record);
+
 
     Course findCourseByCourseIdAndTermId(Integer courseId, Integer termId);
 
     List<Course> findCoursesByTermId(Integer termId);
 
-    Course findByTeacherNoAndTermId(String teacherNo, Integer termId);
+    Course findByTeacherNoAndTermId(String teacherNo,Integer termId);
 
     List<Course> findCoursesByTeacherNo(String teacherNo);
 
-    @Override
+    /**
+     * 查询所有课程
+     * @return Integer
+     * */
     List<Course> findAll();
-
-    Course findCourseByCourseId(Integer courseId);
-
-    @Transactional
-    Integer deleteCourseByCourseId(Integer courseId);
 
     /**
      * 根据TeacherNo删除记录
+     * @param teacherNo
      * @return Integer
      * */
     Integer deleteCoursesByTeacherNo(String teacherNo);

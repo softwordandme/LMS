@@ -63,12 +63,12 @@ public class ClazzService {
     /**
     * 添加操作
      */
-    public Clazz addClazzDo(Clazz clazz){
+    public int addClazzDo(Clazz clazz){
         Clazz clazz1 = clazzDao.findClazzByClazzNumAndCourseId(clazz.getClazzNum(),clazz.getCourseId());
         if (clazz1 != null){
-            return null;
+            return 0;
         }else {
-            return clazzDao.save(clazz);
+            return clazzDao.insert(clazz);
         }
     }
 
@@ -81,12 +81,12 @@ public class ClazzService {
     /**
     * 更新Clazz信息
      */
-    public  Clazz editClazzDo(Clazz clazz){
+    public  int editClazzDo(Clazz clazz){
         Clazz clazz1 = clazzDao.findClazzByClazzNumAndCourseId(clazz.getClazzNum(),clazz.getCourseId());
         if (clazz1 != null){
-            return null;
+            return 0;
         }else {
-            return clazzDao.save(clazz);
+            return clazzDao.updateByPrimaryKeySelective(clazz);
         }
 
     }

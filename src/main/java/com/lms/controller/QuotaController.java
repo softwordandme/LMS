@@ -96,8 +96,8 @@ public class QuotaController {
     @RequestMapping("/editQuotaDo")
     @ResponseBody
     public  String editQuotaDo(Quota quota){
-        Quota qt=quotaService.editQuota(quota);
-        if (qt!=null){
+        int qt=quotaService.editQuota(quota);
+        if (qt!=0){
             return "1";
         }else {
             return "0";

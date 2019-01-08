@@ -54,8 +54,8 @@ public class CourseController {
     @RequestMapping("/addCourseDo")
     @ResponseBody
     public String addCourseDo(Course course) {
-        Course co = courseService.addCourseDo(course);
-        if (co != null) {
+        int co = courseService.addCourseDo(course);
+        if (co != 0) {
             return "1";
         } else {
             return "0";

@@ -1,25 +1,36 @@
 package com.lms.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
+import com.lms.po.Quota;
 import java.util.List;
 
-@Repository
-public interface QuotaDao extends JpaRepository<Quota,Integer> {
+public interface QuotaDao{
+
+
+    int insert(Quota record);
+
+    int insertSelective(Quota record);
+
+    int updateByPrimaryKeySelective(Quota record);
+
+    int updateByPrimaryKey(Quota record);
 
     /**
      * 查询所有指标记录
+     * @return List<Quota>
      * */
-    @Override
     List<Quota> findAll();
     /**
      * 删除记录
      * @param quotaId 指标id
      * @return 数值(返回记录条数)
      * */
-    Integer deleteQuotaByQuotaId(Integer quotaId);
+    int deleteByPrimaryKey(Integer quotaId);
 
+    /**
+     * 根据指标类型查询所有
+     * @param quotaType
+     * @return List<Quota>
+     * */
     List<Quota> findQuotasByQuotaType(Integer quotaType);
 
     /**
@@ -33,7 +44,7 @@ public interface QuotaDao extends JpaRepository<Quota,Integer> {
      * @param quotaId
      * @return Quota对象
      * */
-    Quota findQuotaByQuotaId(Integer quotaId);
+    Quota selectByPrimaryKey(Integer quotaId);
     /**
      * 根据quotaId查询记录
      * @param quotaParentId

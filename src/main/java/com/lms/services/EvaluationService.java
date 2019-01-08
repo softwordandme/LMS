@@ -37,7 +37,7 @@ public class EvaluationService {
             //获取评教人
             Student student = studentDao.findStudentByStudentNo(evaluationJudgesId);
 
-            Integer clazzNum = student.getClazzNum();
+            String clazzNum = student.getClazzNum();
             evaluation.setClazzNum(clazzNum);
             evaluation.setCourseId(courseId);
         }
@@ -45,7 +45,7 @@ public class EvaluationService {
         evaluation.setEvaluationPlayerId(evaluationPlayerId);
         evaluation.setScore(score);
         evaluation.setEvaluationTremId(termId);
-        evaluationDao.save(evaluation);
+        evaluationDao.insert(evaluation);
         return "true";
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lms.dao.EvaluationTypeMapper">
+<mapper namespace="com.lms.dao.EvaluationTypeDao">
   <resultMap id="BaseResultMap" type="com.lms.po.EvaluationType">
     <constructor>
       <idArg column="evaluation_type_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -90,10 +90,10 @@
     delete from evaluation_type
     where evaluation_type_id = #{evaluationTypeId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.lms.po.EvaluationType">
-    insert into evaluation_type (evaluation_type_id, role_id, status
+  <insert id="insert" useGeneratedKeys="true" keyProperty="evaluationTypeId" parameterType="com.lms.po.EvaluationType">
+    insert into evaluation_type (role_id, status
       )
-    values (#{evaluationTypeId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+    values (#{roleId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.lms.po.EvaluationType">
@@ -121,7 +121,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.EvaluationType">
+  <update id="updateByPrimaryKeySelective"  parameterType="com.lms.po.EvaluationType">
     update evaluation_type
     <set>
       <if test="roleId != null">
@@ -139,4 +139,16 @@
       status = #{status,jdbcType=INTEGER}
     where evaluation_type_id = #{evaluationTypeId,jdbcType=INTEGER}
   </update>
+
+  <select id="findAllByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from evaluation_type
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </select>
+  <select id="findAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from evaluation_type
+  </select>
 </mapper>

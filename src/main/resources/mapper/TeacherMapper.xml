@@ -138,20 +138,11 @@
       <arg column="teacher_sex" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="teacher_status" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="role_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="teacherId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="departmentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="roleId" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="teacherName" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="teacherNo" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="teacherPassword" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="teacherSex" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="teacherStatus" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
     teacher_id, department_id, teacher_name, teacher_no, teacher_password, teacher_sex, 
-    teacher_status, role_id, teacherId, departmentId, roleId, teacherName, teacherNo, 
-    teacherPassword, teacherSex, teacherStatus
+    teacher_status, role_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -166,16 +157,10 @@
   <insert id="insert" parameterType="com.lms.po.Teacher">
     insert into teacher (teacher_id, department_id, teacher_name, 
       teacher_no, teacher_password, teacher_sex, 
-      teacher_status, role_id, teacherId, 
-      departmentId, roleId, teacherName, 
-      teacherNo, teacherPassword, teacherSex, 
-      teacherStatus)
+      teacher_status, role_id)
     values (#{teacherId,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, 
       #{teacherNo,jdbcType=VARCHAR}, #{teacherPassword,jdbcType=VARCHAR}, #{teacherSex,jdbcType=VARCHAR}, 
-      #{teacherStatus,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{teacherid,jdbcType=INTEGER}, 
-      #{departmentid,jdbcType=INTEGER}, #{roleid,jdbcType=VARCHAR}, #{teachername,jdbcType=VARCHAR}, 
-      #{teacherno,jdbcType=VARCHAR}, #{teacherpassword,jdbcType=VARCHAR}, #{teachersex,jdbcType=VARCHAR}, 
-      #{teacherstatus,jdbcType=VARCHAR})
+      #{teacherStatus,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lms.po.Teacher">
     insert into teacher
@@ -204,30 +189,6 @@
       <if test="roleId != null">
         role_id,
       </if>
-      <if test="teacherid != null">
-        teacherId,
-      </if>
-      <if test="departmentid != null">
-        departmentId,
-      </if>
-      <if test="roleid != null">
-        roleId,
-      </if>
-      <if test="teachername != null">
-        teacherName,
-      </if>
-      <if test="teacherno != null">
-        teacherNo,
-      </if>
-      <if test="teacherpassword != null">
-        teacherPassword,
-      </if>
-      <if test="teachersex != null">
-        teacherSex,
-      </if>
-      <if test="teacherstatus != null">
-        teacherStatus,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="teacherId != null">
@@ -253,30 +214,6 @@
       </if>
       <if test="roleId != null">
         #{roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="teacherid != null">
-        #{teacherid,jdbcType=INTEGER},
-      </if>
-      <if test="departmentid != null">
-        #{departmentid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null">
-        #{roleid,jdbcType=VARCHAR},
-      </if>
-      <if test="teachername != null">
-        #{teachername,jdbcType=VARCHAR},
-      </if>
-      <if test="teacherno != null">
-        #{teacherno,jdbcType=VARCHAR},
-      </if>
-      <if test="teacherpassword != null">
-        #{teacherpassword,jdbcType=VARCHAR},
-      </if>
-      <if test="teachersex != null">
-        #{teachersex,jdbcType=VARCHAR},
-      </if>
-      <if test="teacherstatus != null">
-        #{teacherstatus,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -304,30 +241,6 @@
       <if test="roleId != null">
         role_id = #{roleId,jdbcType=VARCHAR},
       </if>
-      <if test="teacherid != null">
-        teacherId = #{teacherid,jdbcType=INTEGER},
-      </if>
-      <if test="departmentid != null">
-        departmentId = #{departmentid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null">
-        roleId = #{roleid,jdbcType=VARCHAR},
-      </if>
-      <if test="teachername != null">
-        teacherName = #{teachername,jdbcType=VARCHAR},
-      </if>
-      <if test="teacherno != null">
-        teacherNo = #{teacherno,jdbcType=VARCHAR},
-      </if>
-      <if test="teacherpassword != null">
-        teacherPassword = #{teacherpassword,jdbcType=VARCHAR},
-      </if>
-      <if test="teachersex != null">
-        teacherSex = #{teachersex,jdbcType=VARCHAR},
-      </if>
-      <if test="teacherstatus != null">
-        teacherStatus = #{teacherstatus,jdbcType=VARCHAR},
-      </if>
     </set>
     where teacher_id = #{teacherId,jdbcType=INTEGER}
   </update>
@@ -339,15 +252,7 @@
       teacher_password = #{teacherPassword,jdbcType=VARCHAR},
       teacher_sex = #{teacherSex,jdbcType=VARCHAR},
       teacher_status = #{teacherStatus,jdbcType=VARCHAR},
-      role_id = #{roleId,jdbcType=VARCHAR},
-      teacherId = #{teacherid,jdbcType=INTEGER},
-      departmentId = #{departmentid,jdbcType=INTEGER},
-      roleId = #{roleid,jdbcType=VARCHAR},
-      teacherName = #{teachername,jdbcType=VARCHAR},
-      teacherNo = #{teacherno,jdbcType=VARCHAR},
-      teacherPassword = #{teacherpassword,jdbcType=VARCHAR},
-      teacherSex = #{teachersex,jdbcType=VARCHAR},
-      teacherStatus = #{teacherstatus,jdbcType=VARCHAR}
+      role_id = #{roleId,jdbcType=VARCHAR}
     where teacher_id = #{teacherId,jdbcType=INTEGER}
   </update>
 </mapper>

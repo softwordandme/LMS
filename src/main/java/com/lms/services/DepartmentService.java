@@ -21,7 +21,7 @@ public class DepartmentService {
 
     public String findDepartmentNameById(Integer departmentId){
         Department department;
-        department = departmentDao.findAllByDepartmentId(departmentId);
+        department = departmentDao.selectByPrimaryKey(departmentId);
         return department.getDepartmentName();
     }
 
@@ -50,7 +50,7 @@ public class DepartmentService {
             department.setParentId(cParent);
         }
         department.setDepartmentName(departmentName);
-        departmentDao.save(department);
+        departmentDao.insert(department);
         return "true";
     }
 
@@ -58,17 +58,17 @@ public class DepartmentService {
      * 根据departmentId修改部门departmentName
      */
     public String saveDepartmentByDepartmentId(String departmentId,String departmentName){
-        Department department = departmentDao.findAllByDepartmentId(Integer.parseInt(departmentId));
+        Department department = departmentDao.selectByPrimaryKey(Integer.parseInt(departmentId));
         department.setParentId(Integer.parseInt(departmentId));
         department.setDepartmentName(departmentName);
         System.out.print(department);
-        departmentDao.save(department);
+        departmentDao.updateByPrimaryKeySelective(department);
         return "true";
     }
 
     @Transactional
     public String delDepartment(String departmentId){
-        departmentDao.deleteById(Integer.parseInt(departmentId));
+        departmentDao.deleteByPrimaryKey(Integer.parseInt(departmentId));
         departmentDao.deleteDepartmentsByParentId(Integer.parseInt(departmentId));
 
             return "true";

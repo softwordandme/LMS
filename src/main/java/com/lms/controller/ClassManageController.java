@@ -65,8 +65,8 @@ public class ClassManageController {
     @RequestMapping("/addClazzDo")
     @ResponseBody
     public String addClazzDo(Clazz clazz){
-        Clazz cl=clazzService.addClazzDo(clazz);
-        if (cl!=null){
+        int cl=clazzService.addClazzDo(clazz);
+        if (cl!=0){
             return "1";
         }else {
             return "0";
@@ -93,8 +93,8 @@ public class ClassManageController {
     @RequestMapping("/editClazzDo")
     @ResponseBody
     public  String editClazzDo(Clazz clazz){
-        Clazz cl=clazzService.editClazzDo(clazz);
-        if (cl!=null){
+        int cl=clazzService.editClazzDo(clazz);
+        if (cl!=0){
             return "1";
         }else {
             return "0";

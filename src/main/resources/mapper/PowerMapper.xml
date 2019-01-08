@@ -23,10 +23,10 @@
     delete from power
     where power_id = #{powerId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.lms.po.Power">
-    insert into power (power_id, rloe_id, menu_id, 
+  <insert id="insert" useGeneratedKeys="true" keyProperty="powerId" parameterType="com.lms.po.Power">
+    insert into power (rloe_id, menu_id,
       power_it, power_name)
-    values (#{powerId,jdbcType=INTEGER}, #{rloeId,jdbcType=INTEGER}, #{menuId,jdbcType=INTEGER}, 
+    values (#{rloeId,jdbcType=INTEGER}, #{menuId,jdbcType=INTEGER},
       #{powerIt,jdbcType=INTEGER}, #{powerName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lms.po.Power">
@@ -99,13 +99,10 @@
       <arg column="menu_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="power_it" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="power_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="powerId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="powerIt" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="powerName" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    power_id, rloe_id, menu_id, power_it, power_name, powerId, powerIt, powerName
+    power_id, rloe_id, menu_id, power_it, power_name
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -119,11 +116,9 @@
   </delete>
   <insert id="insert" parameterType="com.lms.po.Power">
     insert into power (power_id, rloe_id, menu_id, 
-      power_it, power_name, powerId, 
-      powerIt, powerName)
+      power_it, power_name)
     values (#{powerId,jdbcType=INTEGER}, #{rloeId,jdbcType=INTEGER}, #{menuId,jdbcType=INTEGER}, 
-      #{powerIt,jdbcType=INTEGER}, #{powerName,jdbcType=VARCHAR}, #{powerid,jdbcType=INTEGER}, 
-      #{powerit,jdbcType=INTEGER}, #{powername,jdbcType=VARCHAR})
+      #{powerIt,jdbcType=INTEGER}, #{powerName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lms.po.Power">
     insert into power
@@ -143,15 +138,6 @@
       <if test="powerName != null">
         power_name,
       </if>
-      <if test="powerid != null">
-        powerId,
-      </if>
-      <if test="powerit != null">
-        powerIt,
-      </if>
-      <if test="powername != null">
-        powerName,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="powerId != null">
@@ -168,15 +154,6 @@
       </if>
       <if test="powerName != null">
         #{powerName,jdbcType=VARCHAR},
-      </if>
-      <if test="powerid != null">
-        #{powerid,jdbcType=INTEGER},
-      </if>
-      <if test="powerit != null">
-        #{powerit,jdbcType=INTEGER},
-      </if>
-      <if test="powername != null">
-        #{powername,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -195,15 +172,6 @@
       <if test="powerName != null">
         power_name = #{powerName,jdbcType=VARCHAR},
       </if>
-      <if test="powerid != null">
-        powerId = #{powerid,jdbcType=INTEGER},
-      </if>
-      <if test="powerit != null">
-        powerIt = #{powerit,jdbcType=INTEGER},
-      </if>
-      <if test="powername != null">
-        powerName = #{powername,jdbcType=VARCHAR},
-      </if>
     </set>
     where power_id = #{powerId,jdbcType=INTEGER}
   </update>
@@ -212,10 +180,13 @@
     set rloe_id = #{rloeId,jdbcType=INTEGER},
       menu_id = #{menuId,jdbcType=INTEGER},
       power_it = #{powerIt,jdbcType=INTEGER},
-      power_name = #{powerName,jdbcType=VARCHAR},
-      powerId = #{powerid,jdbcType=INTEGER},
-      powerIt = #{powerit,jdbcType=INTEGER},
-      powerName = #{powername,jdbcType=VARCHAR}
+      power_name = #{powerName,jdbcType=VARCHAR}
     where power_id = #{powerId,jdbcType=INTEGER}
   </update>
+
+  <select id="findAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from power
+  </select>
 </mapper>

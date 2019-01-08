@@ -1,18 +1,25 @@
 package com.lms.dao;
 
 
+import com.lms.po.Menu;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
-@Repository
-public interface MenuDao extends JpaRepository<Menu,Integer> {
+public interface MenuDao{
 
-    @Override
-    List<Menu> findAll(Sort sort);
+    List<Menu> findAll();
 
-    Menu findMenuByMenuId(Integer id);
+    int deleteByPrimaryKey(Integer menuId);
+
+    int insert(Menu record);
+
+    int insertSelective(Menu record);
+
+    Menu selectByPrimaryKey(Integer menuId);
+
+    int updateByPrimaryKeySelective(Menu record);
+
+    int updateByPrimaryKey(Menu record);
 
 }

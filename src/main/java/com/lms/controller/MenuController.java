@@ -19,8 +19,8 @@ public class MenuController {
 
     @RequestMapping("/MenuList")
     public String menuList(HttpServletRequest request, HttpServletResponse response){
-        Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC,"menuNum"));
-        List<Menu> menuList = menuService.findAll(sort);
+        /*Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC,"menuNum"));*/
+        List<Menu> menuList = menuService.findAll();
         List<Menu> parentMenuList = new ArrayList<>();
         List<Menu> chMenuList = new ArrayList<>();
         for(int i=0;i<menuList.size();i++){

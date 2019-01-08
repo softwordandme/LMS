@@ -9,23 +9,11 @@ public class Course {
 
     private Integer termId;
 
-    private Integer courseid;
-
-    private String coursename;
-
-    private String teacherno;
-
-    private Integer termid;
-
-    public Course(Integer courseId, String courseName, String teacherNo, Integer termId, Integer courseid, String coursename, String teacherno, Integer termid) {
+    public Course(Integer courseId, String courseName, String teacherNo, Integer termId) {
         this.courseId = courseId;
         this.courseName = courseName;
         this.teacherNo = teacherNo;
         this.termId = termId;
-        this.courseid = courseid;
-        this.coursename = coursename;
-        this.teacherno = teacherno;
-        this.termid = termid;
     }
 
     public Course() {
@@ -62,37 +50,5 @@ public class Course {
 
     public void setTermId(Integer termId) {
         this.termId = termId;
-    }
-
-    public Integer getCourseid() {
-        return courseid;
-    }
-
-    public void setCourseid(Integer courseid) {
-        this.courseid = courseid;
-    }
-
-    public String getCoursename() {
-        return coursename;
-    }
-
-    public void setCoursename(String coursename) {
-        this.coursename = coursename == null ? null : coursename.trim();
-    }
-
-    public String getTeacherno() {
-        return teacherno;
-    }
-
-    public void setTeacherno(String teacherno) {
-        this.teacherno = teacherno == null ? null : teacherno.trim();
-    }
-
-    public Integer getTermid() {
-        return termid;
-    }
-
-    public void setTermid(Integer termid) {
-        this.termid = termid;
     }
 }

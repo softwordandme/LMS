@@ -25,11 +25,11 @@
     delete from menu
     where menu_id = #{menuId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.lms.po.Menu">
-    insert into menu (menu_id, menu_name, menu_num, 
+  <insert id="insert" useGeneratedKeys="true" keyProperty="menuId" parameterType="com.lms.po.Menu">
+    insert into menu (menu_name, menu_num,
       menu_parent_id, menu_power, menu_url, 
       pname)
-    values (#{menuId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{menuNum,jdbcType=INTEGER}, 
+    values (#{menuName,jdbcType=VARCHAR}, #{menuNum,jdbcType=INTEGER},
       #{menuParentId,jdbcType=INTEGER}, #{menuPower,jdbcType=INTEGER}, #{menuUrl,jdbcType=VARCHAR}, 
       #{pname,jdbcType=VARCHAR})
   </insert>
@@ -125,17 +125,10 @@
       <arg column="menu_power" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="menu_url" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="pname" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="menuId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="menuName" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="menuNum" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="menuParentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="menuPower" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="menuUrl" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    menu_id, menu_name, menu_num, menu_parent_id, menu_power, menu_url, pname, menuId, 
-    menuName, menuNum, menuParentId, menuPower, menuUrl
+    menu_id, menu_name, menu_num, menu_parent_id, menu_power, menu_url, pname
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -150,14 +143,10 @@
   <insert id="insert" parameterType="com.lms.po.Menu">
     insert into menu (menu_id, menu_name, menu_num, 
       menu_parent_id, menu_power, menu_url, 
-      pname, menuId, menuName, 
-      menuNum, menuParentId, menuPower, 
-      menuUrl)
+      pname)
     values (#{menuId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{menuNum,jdbcType=INTEGER}, 
       #{menuParentId,jdbcType=INTEGER}, #{menuPower,jdbcType=INTEGER}, #{menuUrl,jdbcType=VARCHAR}, 
-      #{pname,jdbcType=VARCHAR}, #{menuid,jdbcType=INTEGER}, #{menuname,jdbcType=VARCHAR}, 
-      #{menunum,jdbcType=INTEGER}, #{menuparentid,jdbcType=INTEGER}, #{menupower,jdbcType=INTEGER}, 
-      #{menuurl,jdbcType=VARCHAR})
+      #{pname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lms.po.Menu">
     insert into menu
@@ -183,24 +172,6 @@
       <if test="pname != null">
         pname,
       </if>
-      <if test="menuid != null">
-        menuId,
-      </if>
-      <if test="menuname != null">
-        menuName,
-      </if>
-      <if test="menunum != null">
-        menuNum,
-      </if>
-      <if test="menuparentid != null">
-        menuParentId,
-      </if>
-      <if test="menupower != null">
-        menuPower,
-      </if>
-      <if test="menuurl != null">
-        menuUrl,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="menuId != null">
@@ -223,24 +194,6 @@
       </if>
       <if test="pname != null">
         #{pname,jdbcType=VARCHAR},
-      </if>
-      <if test="menuid != null">
-        #{menuid,jdbcType=INTEGER},
-      </if>
-      <if test="menuname != null">
-        #{menuname,jdbcType=VARCHAR},
-      </if>
-      <if test="menunum != null">
-        #{menunum,jdbcType=INTEGER},
-      </if>
-      <if test="menuparentid != null">
-        #{menuparentid,jdbcType=INTEGER},
-      </if>
-      <if test="menupower != null">
-        #{menupower,jdbcType=INTEGER},
-      </if>
-      <if test="menuurl != null">
-        #{menuurl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -265,24 +218,6 @@
       <if test="pname != null">
         pname = #{pname,jdbcType=VARCHAR},
       </if>
-      <if test="menuid != null">
-        menuId = #{menuid,jdbcType=INTEGER},
-      </if>
-      <if test="menuname != null">
-        menuName = #{menuname,jdbcType=VARCHAR},
-      </if>
-      <if test="menunum != null">
-        menuNum = #{menunum,jdbcType=INTEGER},
-      </if>
-      <if test="menuparentid != null">
-        menuParentId = #{menuparentid,jdbcType=INTEGER},
-      </if>
-      <if test="menupower != null">
-        menuPower = #{menupower,jdbcType=INTEGER},
-      </if>
-      <if test="menuurl != null">
-        menuUrl = #{menuurl,jdbcType=VARCHAR},
-      </if>
     </set>
     where menu_id = #{menuId,jdbcType=INTEGER}
   </update>
@@ -293,13 +228,14 @@
       menu_parent_id = #{menuParentId,jdbcType=INTEGER},
       menu_power = #{menuPower,jdbcType=INTEGER},
       menu_url = #{menuUrl,jdbcType=VARCHAR},
-      pname = #{pname,jdbcType=VARCHAR},
-      menuId = #{menuid,jdbcType=INTEGER},
-      menuName = #{menuname,jdbcType=VARCHAR},
-      menuNum = #{menunum,jdbcType=INTEGER},
-      menuParentId = #{menuparentid,jdbcType=INTEGER},
-      menuPower = #{menupower,jdbcType=INTEGER},
-      menuUrl = #{menuurl,jdbcType=VARCHAR}
+      pname = #{pname,jdbcType=VARCHAR}
     where menu_id = #{menuId,jdbcType=INTEGER}
   </update>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from menu
+    order by menu_num ASC
+  </select>
 </mapper>

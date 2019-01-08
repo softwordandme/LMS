@@ -20,7 +20,7 @@ public class EvaluationTypeService {
      */
     public EvaluationType findEvaluationTypeAllByevaluationTypeId(Integer evaluationTypeId){
         EvaluationType evaluationType;
-        evaluationType = evaluationTypeDao.findEvaluationTypeAllByEvaluationTypeId(evaluationTypeId);
+        evaluationType = evaluationTypeDao.selectByPrimaryKey(evaluationTypeId);
         return evaluationType;
     }
     public List<EvaluationType> findAll(){
@@ -37,7 +37,7 @@ public class EvaluationTypeService {
     }
 
 
-    public EvaluationType updateStatus(EvaluationType evaluationType){
-        return evaluationTypeDao.save(evaluationType);
+    public int updateStatus(EvaluationType evaluationType){
+        return evaluationTypeDao.insert(evaluationType);
     }
 }

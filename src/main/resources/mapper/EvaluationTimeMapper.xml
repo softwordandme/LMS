@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lms.dao.EvaluationTimeMapper">
+<mapper namespace="com.lms.dao.EvaluationTimeDao">
   <resultMap id="BaseResultMap" type="com.lms.po.EvaluationTime">
     <constructor>
       <idArg column="evaluation_time_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -28,12 +28,12 @@
     delete from evaluation_time
     where evaluation_time_id = #{evaluationTimeId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.lms.po.EvaluationTime">
-    insert into evaluation_time (evaluation_time_id, evaluation_type_id, 
+  <insert id="insert" useGeneratedKeys="true" keyProperty="evaluationTimeId" parameterType="com.lms.po.EvaluationTime">
+    insert into evaluation_time (evaluation_type_id,
       evaluationtime_bg, evaluationtime_en, 
       term_id, evaluation_end, evaluation_start, 
       role_name, term_name)
-    values (#{evaluationTimeId,jdbcType=INTEGER}, #{evaluationTypeId,jdbcType=INTEGER}, 
+    values (#{evaluationTypeId,jdbcType=INTEGER},
       #{evaluationtimeBg,jdbcType=TIMESTAMP}, #{evaluationtimeEn,jdbcType=TIMESTAMP}, 
       #{termId,jdbcType=INTEGER}, #{evaluationEnd,jdbcType=TIMESTAMP}, #{evaluationStart,jdbcType=TIMESTAMP}, 
       #{roleName,jdbcType=VARCHAR}, #{termName,jdbcType=VARCHAR})
@@ -281,4 +281,10 @@
       term_name = #{termName,jdbcType=VARCHAR}
     where evaluation_time_id = #{evaluationTimeId,jdbcType=INTEGER}
   </update>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from evaluation_time
+  </select>
 </mapper>

@@ -10,17 +10,10 @@
       <arg column="quota_sure" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="quota_weight" javaType="java.lang.Float" jdbcType="REAL" />
       <arg column="quota_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="quotaId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="quotaName" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="quotaParentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="quotaSure" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="quotaType" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="quotaWeight" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    quota_id, quota_name, quota_parent_id, quota_rank, quota_sure, quota_weight, quota_type, 
-    quotaId, quotaName, quotaParentId, quotaSure, quotaType, quotaWeight
+    quota_id, quota_name, quota_parent_id, quota_rank, quota_sure, quota_weight, quota_type
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -32,17 +25,13 @@
     delete from quota
     where quota_id = #{quotaId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.lms.po.Quota">
-    insert into quota (quota_id, quota_name, quota_parent_id, 
+  <insert id="insert" useGeneratedKeys="true" keyProperty="quotaId" parameterType="com.lms.po.Quota">
+    insert into quota (quota_name, quota_parent_id,
       quota_rank, quota_sure, quota_weight, 
-      quota_type, quotaId, quotaName, 
-      quotaParentId, quotaSure, quotaType, 
-      quotaWeight)
-    values (#{quotaId,jdbcType=INTEGER}, #{quotaName,jdbcType=VARCHAR}, #{quotaParentId,jdbcType=INTEGER}, 
+      quota_type)
+    values (#{quotaName,jdbcType=VARCHAR}, #{quotaParentId,jdbcType=INTEGER},
       #{quotaRank,jdbcType=INTEGER}, #{quotaSure,jdbcType=INTEGER}, #{quotaWeight,jdbcType=REAL}, 
-      #{quotaType,jdbcType=INTEGER}, #{quotaid,jdbcType=INTEGER}, #{quotaname,jdbcType=VARCHAR}, 
-      #{quotaparentid,jdbcType=INTEGER}, #{quotasure,jdbcType=INTEGER}, #{quotatype,jdbcType=INTEGER}, 
-      #{quotaweight,jdbcType=DECIMAL})
+      #{quotaType,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.lms.po.Quota">
     insert into quota
@@ -68,24 +57,6 @@
       <if test="quotaType != null">
         quota_type,
       </if>
-      <if test="quotaid != null">
-        quotaId,
-      </if>
-      <if test="quotaname != null">
-        quotaName,
-      </if>
-      <if test="quotaparentid != null">
-        quotaParentId,
-      </if>
-      <if test="quotasure != null">
-        quotaSure,
-      </if>
-      <if test="quotatype != null">
-        quotaType,
-      </if>
-      <if test="quotaweight != null">
-        quotaWeight,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="quotaId != null">
@@ -108,24 +79,6 @@
       </if>
       <if test="quotaType != null">
         #{quotaType,jdbcType=INTEGER},
-      </if>
-      <if test="quotaid != null">
-        #{quotaid,jdbcType=INTEGER},
-      </if>
-      <if test="quotaname != null">
-        #{quotaname,jdbcType=VARCHAR},
-      </if>
-      <if test="quotaparentid != null">
-        #{quotaparentid,jdbcType=INTEGER},
-      </if>
-      <if test="quotasure != null">
-        #{quotasure,jdbcType=INTEGER},
-      </if>
-      <if test="quotatype != null">
-        #{quotatype,jdbcType=INTEGER},
-      </if>
-      <if test="quotaweight != null">
-        #{quotaweight,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -150,24 +103,6 @@
       <if test="quotaType != null">
         quota_type = #{quotaType,jdbcType=INTEGER},
       </if>
-      <if test="quotaid != null">
-        quotaId = #{quotaid,jdbcType=INTEGER},
-      </if>
-      <if test="quotaname != null">
-        quotaName = #{quotaname,jdbcType=VARCHAR},
-      </if>
-      <if test="quotaparentid != null">
-        quotaParentId = #{quotaparentid,jdbcType=INTEGER},
-      </if>
-      <if test="quotasure != null">
-        quotaSure = #{quotasure,jdbcType=INTEGER},
-      </if>
-      <if test="quotatype != null">
-        quotaType = #{quotatype,jdbcType=INTEGER},
-      </if>
-      <if test="quotaweight != null">
-        quotaWeight = #{quotaweight,jdbcType=DECIMAL},
-      </if>
     </set>
     where quota_id = #{quotaId,jdbcType=INTEGER}
   </update>
@@ -178,13 +113,7 @@
       quota_rank = #{quotaRank,jdbcType=INTEGER},
       quota_sure = #{quotaSure,jdbcType=INTEGER},
       quota_weight = #{quotaWeight,jdbcType=REAL},
-      quota_type = #{quotaType,jdbcType=INTEGER},
-      quotaId = #{quotaid,jdbcType=INTEGER},
-      quotaName = #{quotaname,jdbcType=VARCHAR},
-      quotaParentId = #{quotaparentid,jdbcType=INTEGER},
-      quotaSure = #{quotasure,jdbcType=INTEGER},
-      quotaType = #{quotatype,jdbcType=INTEGER},
-      quotaWeight = #{quotaweight,jdbcType=DECIMAL}
+      quota_type = #{quotaType,jdbcType=INTEGER}
     where quota_id = #{quotaId,jdbcType=INTEGER}
   </update>
   <resultMap id="BaseResultMap" type="com.lms.po.Quota">
@@ -302,4 +231,21 @@
       quota_type = #{quotaType,jdbcType=INTEGER}
     where quota_id = #{quotaId,jdbcType=INTEGER}
   </update>
+
+  <select id="findQuotasByQuotaType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quota
+    where quota_type = #{quotaType,jdbcType=INTEGER}
+  </select>
+  <select id="findQuotasByQuotaParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quota
+    where quota_parent_id = #{quotaParentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteQuotaByQuotaParentId" parameterType="java.lang.Integer">
+    delete from quota
+    where quota_parent_id = #{quotaParentId,jdbcType=INTEGER}
+  </delete>
 </mapper>

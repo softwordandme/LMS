@@ -114,6 +114,6 @@ public class TeacherService {
     }
     @Transactional
     public Integer deleteClazzesByCourseId(Integer courseId){
-        return clazzDao.deleteClazzesByCourseId(courseId);
+        return clazzDao.deleteAllByCourseId(courseId);
     }
 }

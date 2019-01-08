@@ -29,9 +29,9 @@ public class PowerService {
             String rn[] = roleList.get(i).getRolePower().split(",");
             for(int j=0;j<rn.length;j++){
                 if(j==0){
-                    n=menuDao.findMenuByMenuId(Integer.parseInt(rn[j])).getMenuName();
+                    n=menuDao.selectByPrimaryKey(Integer.parseInt(rn[j])).getMenuName();
                 }else {
-                    n=n+","+menuDao.findMenuByMenuId(Integer.parseInt(rn[j])).getMenuName();
+                    n=n+","+menuDao.selectByPrimaryKey(Integer.parseInt(rn[j])).getMenuName();
                 }
 
             }
@@ -42,13 +42,13 @@ public class PowerService {
     }
 
     public Role findByRoleId(Integer roleId){
-        return roleDao.findByRoleId(roleId);
+        return roleDao.selectByPrimaryKey(roleId);
     }
 
     public void deleteRole(Integer roleId){
-        roleDao.deleteById(roleId);
+        roleDao.deleteByPrimaryKey(roleId);
         EvaluationType evaluationType = evaluationTypeDao.findAllByRoleId(roleId);
-        evaluationTypeDao.delete(evaluationType);
+        evaluationTypeDao.deleteByPrimaryKey(evaluationType.getEvaluationTypeId());
     }
 
     public List<Power> findAll(){
@@ -62,13 +62,13 @@ public class PowerService {
     public void saveRole(Role role){
          //System.out.println(roleDao.save(role));
         if(role.getRoleId()!=null){
-            Role role1 = roleDao.save(role);
+            roleDao.updateByPrimaryKey(role);
         }else {
-            Role role1 = roleDao.save(role);
+            roleDao.insert(role);
             EvaluationType evaluationType = new EvaluationType();
-            evaluationType.setRoleId(role1.getRoleId());
+            evaluationType.setRoleId(role.getRoleId());
             evaluationType.setStatus(0);
-            evaluationTypeDao.save(evaluationType);
+            evaluationTypeDao.insert(evaluationType);
         }
     }
 }

@@ -97,7 +97,7 @@ public class EvaluationTimeController {
         evaluationTime.setEvaluationStart(format.parse(evaluationStartin));
         evaluationTime.setEvaluationEnd(format.parse(evaluationEndin));
         evaluationTime.setEvaluationTypeId(evaluationTypeId);
-        EvaluationTime et = evaluationTimeService.addEvaluation(evaluationTime);
+        int et = evaluationTimeService.addEvaluation(evaluationTime);
         return "redirect:"+"/evaluationTimeManagement";
 
     }
@@ -125,7 +125,7 @@ public class EvaluationTimeController {
         evaluationTime.setEvaluationStart(format.parse(evaluationStartin));
         evaluationTime.setEvaluationEnd(format.parse(evaluationEndin));
         evaluationTime.setEvaluationTypeId(evaluationTypeId);
-        EvaluationTime et = evaluationTimeService.updateEvaluation(evaluationTime);
+        int et = evaluationTimeService.updateEvaluation(evaluationTime);
         return "redirect:"+"/evaluationTimeManagement";
 
     }

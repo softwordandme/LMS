@@ -44,7 +44,7 @@ public class RoleService {
         String[] roleIdList = roleId.split(",");
         for (String a:roleIdList){
             Integer intRoleId = Integer.parseInt(a);
-            role = roleDao.findAllByRoleId(intRoleId);
+            role = roleDao.selectByPrimaryKey(intRoleId);
             roleNameList.append(role.getRoleName() + " ");
         }
         return roleNameList;
@@ -58,14 +58,14 @@ public class RoleService {
     }
 
     public Role findByRoleId(String roleId){
-       return roleDao.findByRoleId(Integer.parseInt(roleId));
+       return roleDao.selectByPrimaryKey(Integer.parseInt(roleId));
     }
     public List<Menu> findByRoleIdString(String roleId){
         String[] roleIdList = roleId.split(",");
         String n = new String();
         for (String a:roleIdList){
             Integer intRoleId = Integer.parseInt(a);
-            n =n+","+roleDao.findByRoleId(intRoleId).getRolePower();
+            n =n+","+roleDao.selectByPrimaryKey(intRoleId).getRolePower();
         }
         String[] test1 = n.split(",");
         List<String> list = new ArrayList();
@@ -78,7 +78,7 @@ public class RoleService {
         for(int i=0;i<list.size();i++){
             String mId = list.get(i);
             if(!"".equals(mId)){
-                menuList.add(menuDao.findMenuByMenuId(Integer.parseInt(mId)));
+                menuList.add(menuDao.selectByPrimaryKey(Integer.parseInt(mId)));
             }
         }
         return menuList;

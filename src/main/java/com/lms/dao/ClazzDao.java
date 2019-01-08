@@ -2,18 +2,21 @@ package com.lms.dao;
 
 
 import com.lms.po.Clazz;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Demo class
+ *
+ * @author zz
+ * @date 2019
+ */
 public interface ClazzDao {
 
     int deleteByPrimaryKey(Integer id);
 
     int insert(Clazz record);
+
 
     int insertSelective(Clazz record);
 
@@ -43,6 +46,11 @@ public interface ClazzDao {
 
     List<Clazz> findClazzesByCourseId(Integer courseId);
 
+    /**
+     * 根据CourseId删除记录
+     * @param courseId
+     * @return Integer
+     * */
     Integer deleteAllByCourseId(Integer courseId);
 
     Clazz findFirstByClazzNum(Integer clazzNum);
@@ -51,12 +59,5 @@ public interface ClazzDao {
      * 查询所有的clazzNum(去除重复)
      * @return List<Integer>
      * */
-    @Query(value = "select distinct clazz_num from clazz",nativeQuery = true)
     List<Integer> findDistinctClazzNum();
-
-    /**
-     * 根据CourseId删除记录
-     * @return Integer
-     * */
-    Integer deleteClazzesByCourseId(Integer courseId);
 }

@@ -57,20 +57,11 @@
       <arg column="department_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="clazz_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="role_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="studentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="clazzNum" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="departmentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="roleId" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="studentName" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="studentNo" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="studentPassword" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="studentSex" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
     student_id, clazz_id, student_name, student_no, student_password, student_sex, department_id, 
-    clazz_num, role_id, studentId, clazzNum, departmentId, roleId, studentName, studentNo, 
-    studentPassword, studentSex
+    clazz_num, role_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -85,16 +76,12 @@
   <insert id="insert" parameterType="com.lms.po.Student">
     insert into student (student_id, clazz_id, student_name, 
       student_no, student_password, student_sex, 
-      department_id, clazz_num, role_id, 
-      studentId, clazzNum, departmentId, 
-      roleId, studentName, studentNo, 
-      studentPassword, studentSex)
+      department_id, clazz_num, role_id
+      )
     values (#{studentId,jdbcType=INTEGER}, #{clazzId,jdbcType=INTEGER}, #{studentName,jdbcType=VARCHAR}, 
       #{studentNo,jdbcType=VARCHAR}, #{studentPassword,jdbcType=VARCHAR}, #{studentSex,jdbcType=VARCHAR}, 
-      #{departmentId,jdbcType=INTEGER}, #{clazzNum,jdbcType=INTEGER}, #{roleId,jdbcType=VARCHAR}, 
-      #{studentid,jdbcType=INTEGER}, #{clazznum,jdbcType=INTEGER}, #{departmentid,jdbcType=INTEGER}, 
-      #{roleid,jdbcType=VARCHAR}, #{studentname,jdbcType=VARCHAR}, #{studentno,jdbcType=VARCHAR}, 
-      #{studentpassword,jdbcType=VARCHAR}, #{studentsex,jdbcType=VARCHAR})
+      #{departmentId,jdbcType=INTEGER}, #{clazzNum,jdbcType=INTEGER}, #{roleId,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lms.po.Student">
     insert into student
@@ -126,30 +113,6 @@
       <if test="roleId != null">
         role_id,
       </if>
-      <if test="studentid != null">
-        studentId,
-      </if>
-      <if test="clazznum != null">
-        clazzNum,
-      </if>
-      <if test="departmentid != null">
-        departmentId,
-      </if>
-      <if test="roleid != null">
-        roleId,
-      </if>
-      <if test="studentname != null">
-        studentName,
-      </if>
-      <if test="studentno != null">
-        studentNo,
-      </if>
-      <if test="studentpassword != null">
-        studentPassword,
-      </if>
-      <if test="studentsex != null">
-        studentSex,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="studentId != null">
@@ -178,30 +141,6 @@
       </if>
       <if test="roleId != null">
         #{roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="studentid != null">
-        #{studentid,jdbcType=INTEGER},
-      </if>
-      <if test="clazznum != null">
-        #{clazznum,jdbcType=INTEGER},
-      </if>
-      <if test="departmentid != null">
-        #{departmentid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null">
-        #{roleid,jdbcType=VARCHAR},
-      </if>
-      <if test="studentname != null">
-        #{studentname,jdbcType=VARCHAR},
-      </if>
-      <if test="studentno != null">
-        #{studentno,jdbcType=VARCHAR},
-      </if>
-      <if test="studentpassword != null">
-        #{studentpassword,jdbcType=VARCHAR},
-      </if>
-      <if test="studentsex != null">
-        #{studentsex,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -232,30 +171,6 @@
       <if test="roleId != null">
         role_id = #{roleId,jdbcType=VARCHAR},
       </if>
-      <if test="studentid != null">
-        studentId = #{studentid,jdbcType=INTEGER},
-      </if>
-      <if test="clazznum != null">
-        clazzNum = #{clazznum,jdbcType=INTEGER},
-      </if>
-      <if test="departmentid != null">
-        departmentId = #{departmentid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null">
-        roleId = #{roleid,jdbcType=VARCHAR},
-      </if>
-      <if test="studentname != null">
-        studentName = #{studentname,jdbcType=VARCHAR},
-      </if>
-      <if test="studentno != null">
-        studentNo = #{studentno,jdbcType=VARCHAR},
-      </if>
-      <if test="studentpassword != null">
-        studentPassword = #{studentpassword,jdbcType=VARCHAR},
-      </if>
-      <if test="studentsex != null">
-        studentSex = #{studentsex,jdbcType=VARCHAR},
-      </if>
     </set>
     where student_id = #{studentId,jdbcType=INTEGER}
   </update>
@@ -268,15 +183,7 @@
       student_sex = #{studentSex,jdbcType=VARCHAR},
       department_id = #{departmentId,jdbcType=INTEGER},
       clazz_num = #{clazzNum,jdbcType=INTEGER},
-      role_id = #{roleId,jdbcType=VARCHAR},
-      studentId = #{studentid,jdbcType=INTEGER},
-      clazzNum = #{clazznum,jdbcType=INTEGER},
-      departmentId = #{departmentid,jdbcType=INTEGER},
-      roleId = #{roleid,jdbcType=VARCHAR},
-      studentName = #{studentname,jdbcType=VARCHAR},
-      studentNo = #{studentno,jdbcType=VARCHAR},
-      studentPassword = #{studentpassword,jdbcType=VARCHAR},
-      studentSex = #{studentsex,jdbcType=VARCHAR}
+      role_id = #{roleId,jdbcType=VARCHAR}
     where student_id = #{studentId,jdbcType=INTEGER}
   </update>
   <resultMap id="BaseResultMap" type="com.lms.po.Student">

@@ -1,10 +1,24 @@
 package com.lms.dao;
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.lms.po.EvaluationTime;
 
-public interface EvaluationTimeDao extends JpaRepository<EvaluationTime,Integer> {
-    EvaluationTime findEvaluationTimeByEvaluationTimeId(Integer evaluationTimeId);
-    Integer deleteEvaluationTimeByEvaluationTimeId(Integer evaluationTimeId);
+import java.util.List;
+
+public interface EvaluationTimeDao {
+
+    List<EvaluationTime> findAll();
+
+    int deleteByPrimaryKey(Integer evaluationTimeId);
+
+    int insert(EvaluationTime record);
+
+    int insertSelective(EvaluationTime record);
+
+    EvaluationTime selectByPrimaryKey(Integer evaluationTimeId);
+
+    int updateByPrimaryKeySelective(EvaluationTime record);
+
+    int updateByPrimaryKey(EvaluationTime record);
 
 }

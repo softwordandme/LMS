@@ -53,7 +53,7 @@ public class SelfMessageService {
      */
     public Role findRoleAll(Integer roleId){
         Role role;
-        role = roleDao.findAllByRoleId(roleId);
+        role = roleDao.selectByPrimaryKey(roleId);
         if (role!=null){
             return role;
         }else{
@@ -66,7 +66,7 @@ public class SelfMessageService {
      */
     public Department findDepartmentAll(Integer departmentId){
         Department department;
-        department = departmentDao.findAllByDepartmentId(departmentId);
+        department = departmentDao.selectByPrimaryKey(departmentId);
         if (department!=null){
             return department;
         }else{

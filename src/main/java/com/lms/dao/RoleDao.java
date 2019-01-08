@@ -1,13 +1,26 @@
 package com.lms.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.lms.po.Role;
 
-@Repository
-public interface RoleDao extends JpaRepository<Role,Integer> {
-    Role findAllByRoleId(Integer roleId);
+import java.util.List;
 
-    Role findByRoleId(Integer roleId);
+public interface RoleDao {
+
 
     Role findRoleByRoleName(String roleName);
+
+
+    int deleteByPrimaryKey(Integer roleId);
+
+    int insert(Role record);
+
+    int insertSelective(Role record);
+
+    Role selectByPrimaryKey(Integer roleId);
+
+    int updateByPrimaryKeySelective(Role record);
+
+    int updateByPrimaryKey(Role record);
+
+    List<Role> findAll();
 }

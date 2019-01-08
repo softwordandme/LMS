@@ -60,26 +60,26 @@ public class CourseService {
      * 根据课程id查找课程
      */
     public Course findCourseByCourseId(Integer courseId){
-        return courseDao.findCourseByCourseId(courseId);
+        return courseDao.selectByPrimaryKey(courseId);
     }
     /**
      * 根据课程id删除课程记录
      */
     public   Integer deleteCourseByCourseId(Integer courseId){
 
-        return  courseDao.deleteCourseByCourseId(courseId);
+        return  courseDao.deleteByPrimaryKey(courseId);
     }
     /**
      * 添加课程记录
      */
-    public Course addCourseDo(Course course){
-        return  courseDao.save(course);
+    public int addCourseDo(Course course){
+        return  courseDao.insert(course);
     }
     /**
      * 修改课程记录
      */
-    public Course editCourseDo(Course course){
-        return  courseDao.save(course);
+    public int editCourseDo(Course course){
+        return  courseDao.insert(course);
     }
     /**根据courseId查询clazz*/
     public List<Clazz> findClazzesByCourseId(Integer courseId){
