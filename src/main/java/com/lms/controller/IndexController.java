@@ -26,7 +26,7 @@ public class IndexController {
 
     @RequestMapping("/test")
     public String test(Model model){
-        List<Student> c=studentDao.findAll() ;
+        List<Student> c=studentDao.findStudents() ;
         model.addAttribute("test",c);
         for(Student cc: c){
             System.out.printf(cc.getStudentNo()+cc.getStudentName()+"噢噢噢噢");

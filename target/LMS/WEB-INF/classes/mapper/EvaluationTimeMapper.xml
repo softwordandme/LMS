@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lms.dao.EvaluationTimeDao">
+  <resultMap id="BaseResultMap" type="com.lms.po.EvaluationTime">
+    <constructor>
+      <idArg column="evaluation_time_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="evaluation_type_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="evaluationtime_bg" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="evaluationtime_en" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="term_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="evaluation_end" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="evaluation_start" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="role_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="term_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    evaluation_time_id, evaluation_type_id, evaluationtime_bg, evaluationtime_en, term_id, 
+    evaluation_end, evaluation_start, role_name, term_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from evaluation_time
+    where evaluation_time_id = #{evaluationTimeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from evaluation_time
+    where evaluation_time_id = #{evaluationTimeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="evaluationTimeId" parameterType="com.lms.po.EvaluationTime">
+    insert into evaluation_time (evaluation_type_id,
+      evaluationtime_bg, evaluationtime_en, 
+      term_id, evaluation_end, evaluation_start, 
+      role_name, term_name)
+    values (#{evaluationTypeId,jdbcType=INTEGER},
+      #{evaluationtimeBg,jdbcType=TIMESTAMP}, #{evaluationtimeEn,jdbcType=TIMESTAMP}, 
+      #{termId,jdbcType=INTEGER}, #{evaluationEnd,jdbcType=TIMESTAMP}, #{evaluationStart,jdbcType=TIMESTAMP}, 
+      #{roleName,jdbcType=VARCHAR}, #{termName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.EvaluationTime">
+    insert into evaluation_time
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="evaluationTimeId != null">
+        evaluation_time_id,
+      </if>
+      <if test="evaluationTypeId != null">
+        evaluation_type_id,
+      </if>
+      <if test="evaluationtimeBg != null">
+        evaluationtime_bg,
+      </if>
+      <if test="evaluationtimeEn != null">
+        evaluationtime_en,
+      </if>
+      <if test="termId != null">
+        term_id,
+      </if>
+      <if test="evaluationEnd != null">
+        evaluation_end,
+      </if>
+      <if test="evaluationStart != null">
+        evaluation_start,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="termName != null">
+        term_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="evaluationTimeId != null">
+        #{evaluationTimeId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationTypeId != null">
+        #{evaluationTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationtimeBg != null">
+        #{evaluationtimeBg,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluationtimeEn != null">
+        #{evaluationtimeEn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="termId != null">
+        #{termId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationEnd != null">
+        #{evaluationEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluationStart != null">
+        #{evaluationStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="termName != null">
+        #{termName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.EvaluationTime">
+    update evaluation_time
+    <set>
+      <if test="evaluationTypeId != null">
+        evaluation_type_id = #{evaluationTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationtimeBg != null">
+        evaluationtime_bg = #{evaluationtimeBg,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluationtimeEn != null">
+        evaluationtime_en = #{evaluationtimeEn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="termId != null">
+        term_id = #{termId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationEnd != null">
+        evaluation_end = #{evaluationEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluationStart != null">
+        evaluation_start = #{evaluationStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="termName != null">
+        term_name = #{termName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where evaluation_time_id = #{evaluationTimeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lms.po.EvaluationTime">
+    update evaluation_time
+    set evaluation_type_id = #{evaluationTypeId,jdbcType=INTEGER},
+      evaluationtime_bg = #{evaluationtimeBg,jdbcType=TIMESTAMP},
+      evaluationtime_en = #{evaluationtimeEn,jdbcType=TIMESTAMP},
+      term_id = #{termId,jdbcType=INTEGER},
+      evaluation_end = #{evaluationEnd,jdbcType=TIMESTAMP},
+      evaluation_start = #{evaluationStart,jdbcType=TIMESTAMP},
+      role_name = #{roleName,jdbcType=VARCHAR},
+      term_name = #{termName,jdbcType=VARCHAR}
+    where evaluation_time_id = #{evaluationTimeId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lms.po.EvaluationTime">
+    <constructor>
+      <idArg column="evaluation_time_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="evaluation_type_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="evaluationtime_bg" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="evaluationtime_en" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="term_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="evaluation_end" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="evaluation_start" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="role_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="term_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    evaluation_time_id, evaluation_type_id, evaluationtime_bg, evaluationtime_en, term_id, 
+    evaluation_end, evaluation_start, role_name, term_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from evaluation_time
+    where evaluation_time_id = #{evaluationTimeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from evaluation_time
+    where evaluation_time_id = #{evaluationTimeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lms.po.EvaluationTime">
+    insert into evaluation_time (evaluation_time_id, evaluation_type_id, 
+      evaluationtime_bg, evaluationtime_en, 
+      term_id, evaluation_end, evaluation_start, 
+      role_name, term_name)
+    values (#{evaluationTimeId,jdbcType=INTEGER}, #{evaluationTypeId,jdbcType=INTEGER}, 
+      #{evaluationtimeBg,jdbcType=TIMESTAMP}, #{evaluationtimeEn,jdbcType=TIMESTAMP}, 
+      #{termId,jdbcType=INTEGER}, #{evaluationEnd,jdbcType=TIMESTAMP}, #{evaluationStart,jdbcType=TIMESTAMP}, 
+      #{roleName,jdbcType=VARCHAR}, #{termName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.EvaluationTime">
+    insert into evaluation_time
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="evaluationTimeId != null">
+        evaluation_time_id,
+      </if>
+      <if test="evaluationTypeId != null">
+        evaluation_type_id,
+      </if>
+      <if test="evaluationtimeBg != null">
+        evaluationtime_bg,
+      </if>
+      <if test="evaluationtimeEn != null">
+        evaluationtime_en,
+      </if>
+      <if test="termId != null">
+        term_id,
+      </if>
+      <if test="evaluationEnd != null">
+        evaluation_end,
+      </if>
+      <if test="evaluationStart != null">
+        evaluation_start,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="termName != null">
+        term_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="evaluationTimeId != null">
+        #{evaluationTimeId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationTypeId != null">
+        #{evaluationTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationtimeBg != null">
+        #{evaluationtimeBg,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluationtimeEn != null">
+        #{evaluationtimeEn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="termId != null">
+        #{termId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationEnd != null">
+        #{evaluationEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluationStart != null">
+        #{evaluationStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="termName != null">
+        #{termName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.EvaluationTime">
+    update evaluation_time
+    <set>
+      <if test="evaluationTypeId != null">
+        evaluation_type_id = #{evaluationTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationtimeBg != null">
+        evaluationtime_bg = #{evaluationtimeBg,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluationtimeEn != null">
+        evaluationtime_en = #{evaluationtimeEn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="termId != null">
+        term_id = #{termId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationEnd != null">
+        evaluation_end = #{evaluationEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluationStart != null">
+        evaluation_start = #{evaluationStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="termName != null">
+        term_name = #{termName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where evaluation_time_id = #{evaluationTimeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lms.po.EvaluationTime">
+    update evaluation_time
+    set evaluation_type_id = #{evaluationTypeId,jdbcType=INTEGER},
+      evaluationtime_bg = #{evaluationtimeBg,jdbcType=TIMESTAMP},
+      evaluationtime_en = #{evaluationtimeEn,jdbcType=TIMESTAMP},
+      term_id = #{termId,jdbcType=INTEGER},
+      evaluation_end = #{evaluationEnd,jdbcType=TIMESTAMP},
+      evaluation_start = #{evaluationStart,jdbcType=TIMESTAMP},
+      role_name = #{roleName,jdbcType=VARCHAR},
+      term_name = #{termName,jdbcType=VARCHAR}
+    where evaluation_time_id = #{evaluationTimeId,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from evaluation_time
+  </select>
+</mapper>

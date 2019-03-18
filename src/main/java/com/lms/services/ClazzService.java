@@ -38,11 +38,11 @@ public class ClazzService {
             return clazzDao.findFirstByClazzNum(clazzNum);
         }
         public List<Clazz> findAll(){
-        return clazzDao.findAll();
+        return clazzDao.findClazzs();
     }
 
     public int deleteClazzById(Integer id){
-         clazzDao.deleteById(id);
+         clazzDao.selectByPrimaryKey(id);
         return 1;
     }
 

@@ -39,6 +39,8 @@ public interface ClazzDao {
      */
     List<Clazz> findClazzAllByClazzNum(Integer clazzNum);
 
+    List<Clazz> findClazzs();
+
     /**
      通过clazzNum（班级编号）和courseId查询所有班级的所有信息
      */

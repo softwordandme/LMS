@@ -14,8 +14,7 @@ public class MenuService {
     MenuDao menuDao;
 
     public List<Menu> findAll(){
-        List<Menu> menuList = menuDao.findAll();
-        return menuList;
+        return menuDao.findAll();
     }
 
     public int save(Menu menu){

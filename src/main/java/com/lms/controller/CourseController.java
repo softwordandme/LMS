@@ -93,8 +93,8 @@ public class CourseController {
             cl.setCourseName(courseName);
             clazzService.editClazzDo(cl);
         }
-        Course course1 = courseService.editCourseDo(course);
-        if (course1 != null) {
+        int result = courseService.editCourseDo(course);
+        if (result ==1) {
             return "1";
         }else {
             return "0";

@@ -35,10 +35,10 @@ public class EvaluationService {
 
         if (courseId != null){
             //获取评教人
-            Student student = studentDao.findStudentByStudentNo(evaluationJudgesId);
+            Student student = studentDao.selectByStudentNo(evaluationJudgesId);
 
-            String clazzNum = student.getClazzNum();
-            evaluation.setClazzNum(clazzNum);
+            Integer clazzNum = student.getClazzNum();
+            evaluation.setClazzNum(clazzNum.toString());
             evaluation.setCourseId(courseId);
         }
         evaluation.setEvaluationJudgesId(evaluationJudgesId);

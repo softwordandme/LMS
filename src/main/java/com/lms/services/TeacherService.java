@@ -29,7 +29,7 @@ public class TeacherService {
      */
     public List<Teacher> findTeacherAll(){
         List<Teacher> teacher;
-        teacher = teacherDao.findAll();
+        teacher = teacherDao.findTeachers();
         if (teacher!=null){
             return teacher;
         }else{
@@ -70,14 +70,16 @@ public class TeacherService {
     public Teacher addTeacher(Teacher teacher){
         //MD5加密
         teacher.setTeacherPassword(DigestUtils.md5DigestAsHex(teacher.getTeacherPassword().getBytes()));
-        return teacherDao.save(teacher);
+        teacherDao.insert(teacher);
+        return teacher;
     }
     /**
      * 修
      改一条记录
      * */
     public   Teacher editTeacher(Teacher teacher){
-        return teacherDao.save(teacher);
+        teacherDao.updateByPrimaryKey(teacher);
+        return teacher;
     }
     /**
      * 删除一条记录

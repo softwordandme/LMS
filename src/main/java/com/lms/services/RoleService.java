@@ -26,14 +26,14 @@ public class RoleService {
 
     /*查找所有教师*/
     public List<Teacher> findAllTeacher(){
-        return teacherDao.findAll();
+        return teacherDao.findTeachers();
     }
 
     /*保存修改的教师权限*/
     public String saveTeacherRole(String teacherNo,String roleId){
         Teacher teacher = teacherDao.findAllByTeacherNo(teacherNo);
         teacher.setRoleId(roleId);
-        teacherDao.save(teacher);
+        teacherDao.insert(teacher);
         return "ture";
     }
 

@@ -27,7 +27,7 @@ public class StudentService {
      **/
     public Student findStudentAll(String studentNo){
         Student student;
-        student = studentDao.findStudentByStudentNo(studentNo);
+        student = studentDao.selectByStudentNo(studentNo);
         if (student!=null){
             return student;
         }else{
@@ -41,31 +41,31 @@ public class StudentService {
     public int addStudentDo(Student student){
         //MD5加密
         student.setStudentPassword(DigestUtils.md5DigestAsHex(student.getStudentPassword().getBytes()));
-        return studentDao.addStudentDo(student);
+        return studentDao.insert(student);
     }
     /**
      根据studentId查找信息
      * */
     public Student findStudentByStudentId(Integer sutdentId){
-        return studentDao.findStudentByStudentId(sutdentId);
+        return studentDao.selectByPrimaryKey(sutdentId);
     }
     public  int editStudentDo(Student student){
-        return  studentDao.editStudentDo(student);
+        return  studentDao.updateByPrimaryKey(student);
     }
     /**查询所有记录*/
     public List<Student> findAll(){
-        return studentDao.findAll();
+        return studentDao.findStudents();
     }
 
     public  Integer deleteStudentByStudentId(Integer studentId){
-        return  studentDao.deleteStudentByStudentId(studentId);
+        return  studentDao.deleteByPrimaryKey(studentId);
     }
 
     /**
      * 根据班级获取学生数
      */
     public Integer countStudentsByClazzNum(Integer clazzNum){
-        return studentDao.countStudentsByClazzNum(clazzNum);
+        return studentDao.selectByClazzNum(clazzNum).size();
     }
 
     public List<Integer> findDistinctClazzNum(){
@@ -73,10 +73,10 @@ public class StudentService {
     }
 
     public Student findStudentByStudentNo(String studentNo){
-        return  studentDao.findStudentByStudentNo(studentNo);
+        return  studentDao.selectByStudentNo(studentNo);
     }
 
    public  Student findTeacherByStudentNoWithStudentId(String studentNo,Integer studentId){
-        return studentDao.findStudentByStudentNoWithStudentId(studentNo,studentId);
+        return studentDao.selectByClazzNumAndStudentNo(studentNo,studentId);
    }
 }

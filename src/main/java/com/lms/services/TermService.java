@@ -25,16 +25,17 @@ public class TermService {
      * 查询所有学期
      */
     public List<Term> findAll(){
-        return termDao.findAll();
+        return termDao.findTerms();
     }
 
     /**
      * 根据termId查询学期名称*/
     public Term findAllBytermId(Integer termId){
 
-        return termDao.findAllByTermId(termId);
+        return termDao.selectByPrimaryKey(termId);
     }
     public Term updateStatus(Term term){
-        return termDao.save(term);
+        termDao.updateByPrimaryKey(term);
+        return term;
     }
 }

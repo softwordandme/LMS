@@ -1,5 +1,7 @@
 package com.lms.po;
 
+import java.math.BigDecimal;
+
 public class Quota {
     private Integer quotaId;
 
@@ -11,11 +13,11 @@ public class Quota {
 
     private Integer quotaSure;
 
-    private Float quotaWeight;
+    private BigDecimal quotaWeight;
 
     private Integer quotaType;
 
-    public Quota(Integer quotaId, String quotaName, Integer quotaParentId, Integer quotaRank, Integer quotaSure, Float quotaWeight, Integer quotaType) {
+    public Quota(Integer quotaId, String quotaName, Integer quotaParentId, Integer quotaRank, Integer quotaSure, BigDecimal quotaWeight, Integer quotaType) {
         this.quotaId = quotaId;
         this.quotaName = quotaName;
         this.quotaParentId = quotaParentId;
@@ -69,11 +71,11 @@ public class Quota {
         this.quotaSure = quotaSure;
     }
 
-    public Float getQuotaWeight() {
+    public BigDecimal getQuotaWeight() {
         return quotaWeight;
     }
 
-    public void setQuotaWeight(Float quotaWeight) {
+    public void setQuotaWeight(BigDecimal quotaWeight) {
         this.quotaWeight = quotaWeight;
     }
 

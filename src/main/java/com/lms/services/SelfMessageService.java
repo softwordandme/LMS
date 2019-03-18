@@ -27,7 +27,7 @@ public class SelfMessageService {
      */
     public Student findStudentAll(String studentNo){
             Student student;
-            student = studentDao.findStudentByStudentNo(studentNo);
+            student = studentDao.selectByStudentNo(studentNo);
             if (student!=null){
                 return student;
             }else{
@@ -97,10 +97,10 @@ public class SelfMessageService {
         String studentS = "学生";
         Integer studentRoleId = roleService.findRoleByRoleName(studentS).getRoleId();
         if (roleId.equals(studentRoleId)){
-            Student student = studentDao.findStudentByStudentNo(userId);
+            Student student = studentDao.selectByStudentNo(userId);
             if(cOldPassword.equals(student.getStudentPassword())){
                 student.setStudentPassword(cChangPassword);
-                studentDao.editStudentDo(student);
+                studentDao.updateByPrimaryKey(student);
                 return "true";
             }else {
                 //旧密码错误
@@ -110,7 +110,7 @@ public class SelfMessageService {
             Teacher teacher = teacherDao.findAllByTeacherNo(userId);
             if(cOldPassword.equals(teacher.getTeacherPassword())){
                 teacher.setTeacherPassword(cChangPassword);
-                teacherDao.save(teacher);
+                teacherDao.updateByPrimaryKey(teacher);
                 return "true";
             }else {
                 //旧密码错误

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lms.dao.QuotaMapper">
+  <resultMap id="BaseResultMap" type="com.lms.po.Quota">
+    <constructor>
+      <idArg column="quota_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="quota_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="quota_parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="quota_rank" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="quota_sure" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="quota_weight" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="quota_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    quota_id, quota_name, quota_parent_id, quota_rank, quota_sure, quota_weight, quota_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from quota
+    where quota_id = #{quotaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from quota
+    where quota_id = #{quotaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="quotaId" parameterType="com.lms.po.Quota">
+    insert into quota (quota_name, quota_parent_id,
+      quota_rank, quota_sure, quota_weight, 
+      quota_type)
+    values (#{quotaName,jdbcType=VARCHAR}, #{quotaParentId,jdbcType=INTEGER},
+      #{quotaRank,jdbcType=INTEGER}, #{quotaSure,jdbcType=INTEGER}, #{quotaWeight,jdbcType=REAL}, 
+      #{quotaType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.Quota">
+    insert into quota
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="quotaId != null">
+        quota_id,
+      </if>
+      <if test="quotaName != null">
+        quota_name,
+      </if>
+      <if test="quotaParentId != null">
+        quota_parent_id,
+      </if>
+      <if test="quotaRank != null">
+        quota_rank,
+      </if>
+      <if test="quotaSure != null">
+        quota_sure,
+      </if>
+      <if test="quotaWeight != null">
+        quota_weight,
+      </if>
+      <if test="quotaType != null">
+        quota_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="quotaId != null">
+        #{quotaId,jdbcType=INTEGER},
+      </if>
+      <if test="quotaName != null">
+        #{quotaName,jdbcType=VARCHAR},
+      </if>
+      <if test="quotaParentId != null">
+        #{quotaParentId,jdbcType=INTEGER},
+      </if>
+      <if test="quotaRank != null">
+        #{quotaRank,jdbcType=INTEGER},
+      </if>
+      <if test="quotaSure != null">
+        #{quotaSure,jdbcType=INTEGER},
+      </if>
+      <if test="quotaWeight != null">
+        #{quotaWeight,jdbcType=REAL},
+      </if>
+      <if test="quotaType != null">
+        #{quotaType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.Quota">
+    update quota
+    <set>
+      <if test="quotaName != null">
+        quota_name = #{quotaName,jdbcType=VARCHAR},
+      </if>
+      <if test="quotaParentId != null">
+        quota_parent_id = #{quotaParentId,jdbcType=INTEGER},
+      </if>
+      <if test="quotaRank != null">
+        quota_rank = #{quotaRank,jdbcType=INTEGER},
+      </if>
+      <if test="quotaSure != null">
+        quota_sure = #{quotaSure,jdbcType=INTEGER},
+      </if>
+      <if test="quotaWeight != null">
+        quota_weight = #{quotaWeight,jdbcType=REAL},
+      </if>
+      <if test="quotaType != null">
+        quota_type = #{quotaType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where quota_id = #{quotaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lms.po.Quota">
+    update quota
+    set quota_name = #{quotaName,jdbcType=VARCHAR},
+      quota_parent_id = #{quotaParentId,jdbcType=INTEGER},
+      quota_rank = #{quotaRank,jdbcType=INTEGER},
+      quota_sure = #{quotaSure,jdbcType=INTEGER},
+      quota_weight = #{quotaWeight,jdbcType=REAL},
+      quota_type = #{quotaType,jdbcType=INTEGER}
+    where quota_id = #{quotaId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lms.po.Quota">
+    <constructor>
+      <idArg column="quota_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="quota_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="quota_parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="quota_rank" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="quota_sure" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="quota_weight" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="quota_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    quota_id, quota_name, quota_parent_id, quota_rank, quota_sure, quota_weight, quota_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from quota
+    where quota_id = #{quotaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from quota
+    where quota_id = #{quotaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lms.po.Quota">
+    insert into quota (quota_id, quota_name, quota_parent_id, 
+      quota_rank, quota_sure, quota_weight, 
+      quota_type)
+    values (#{quotaId,jdbcType=INTEGER}, #{quotaName,jdbcType=VARCHAR}, #{quotaParentId,jdbcType=INTEGER}, 
+      #{quotaRank,jdbcType=INTEGER}, #{quotaSure,jdbcType=INTEGER}, #{quotaWeight,jdbcType=REAL}, 
+      #{quotaType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lms.po.Quota">
+    insert into quota
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="quotaId != null">
+        quota_id,
+      </if>
+      <if test="quotaName != null">
+        quota_name,
+      </if>
+      <if test="quotaParentId != null">
+        quota_parent_id,
+      </if>
+      <if test="quotaRank != null">
+        quota_rank,
+      </if>
+      <if test="quotaSure != null">
+        quota_sure,
+      </if>
+      <if test="quotaWeight != null">
+        quota_weight,
+      </if>
+      <if test="quotaType != null">
+        quota_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="quotaId != null">
+        #{quotaId,jdbcType=INTEGER},
+      </if>
+      <if test="quotaName != null">
+        #{quotaName,jdbcType=VARCHAR},
+      </if>
+      <if test="quotaParentId != null">
+        #{quotaParentId,jdbcType=INTEGER},
+      </if>
+      <if test="quotaRank != null">
+        #{quotaRank,jdbcType=INTEGER},
+      </if>
+      <if test="quotaSure != null">
+        #{quotaSure,jdbcType=INTEGER},
+      </if>
+      <if test="quotaWeight != null">
+        #{quotaWeight,jdbcType=REAL},
+      </if>
+      <if test="quotaType != null">
+        #{quotaType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lms.po.Quota">
+    update quota
+    <set>
+      <if test="quotaName != null">
+        quota_name = #{quotaName,jdbcType=VARCHAR},
+      </if>
+      <if test="quotaParentId != null">
+        quota_parent_id = #{quotaParentId,jdbcType=INTEGER},
+      </if>
+      <if test="quotaRank != null">
+        quota_rank = #{quotaRank,jdbcType=INTEGER},
+      </if>
+      <if test="quotaSure != null">
+        quota_sure = #{quotaSure,jdbcType=INTEGER},
+      </if>
+      <if test="quotaWeight != null">
+        quota_weight = #{quotaWeight,jdbcType=REAL},
+      </if>
+      <if test="quotaType != null">
+        quota_type = #{quotaType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where quota_id = #{quotaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lms.po.Quota">
+    update quota
+    set quota_name = #{quotaName,jdbcType=VARCHAR},
+      quota_parent_id = #{quotaParentId,jdbcType=INTEGER},
+      quota_rank = #{quotaRank,jdbcType=INTEGER},
+      quota_sure = #{quotaSure,jdbcType=INTEGER},
+      quota_weight = #{quotaWeight,jdbcType=REAL},
+      quota_type = #{quotaType,jdbcType=INTEGER}
+    where quota_id = #{quotaId,jdbcType=INTEGER}
+  </update>
+
+  <select id="findQuotasByQuotaType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quota
+    where quota_type = #{quotaType,jdbcType=INTEGER}
+  </select>
+  <select id="findQuotasByQuotaParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quota
+    where quota_parent_id = #{quotaParentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteQuotaByQuotaParentId" parameterType="java.lang.Integer">
+    delete from quota
+    where quota_parent_id = #{quotaParentId,jdbcType=INTEGER}
+  </delete>
+</mapper>

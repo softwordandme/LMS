@@ -37,9 +37,8 @@ public class PowerController {
     @RequestMapping("/menuTree")
     @ResponseBody
     public List<Menu> menuTree(){
-        Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC,"menuNum"));
-        List<Menu> menuList = menuService.findAll(sort);
-        return menuList;
+        /*Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC,"menuNum"));*/
+        return menuService.findAll();
     }
 
     @RequestMapping("/deleteRole")

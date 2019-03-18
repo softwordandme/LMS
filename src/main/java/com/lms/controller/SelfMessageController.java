@@ -44,7 +44,7 @@ public class SelfMessageController {
                 session.setAttribute("userDepartment",department.getDepartmentName());
             }
 
-            session.setAttribute("userSex",student.getStudentSex());
+            session.setAttribute("userSex",student);
 
             session.setAttribute("userClazz",student.getClazzNum());
         } else {

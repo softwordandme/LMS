@@ -20,7 +20,7 @@ public class LoginService {
     /*对比学生表密码*/
     public Student loginStudentFind(String studentNo,String password){
         Student stu;
-        stu = studentDao.findStudentByStudentNo(studentNo);
+        stu = studentDao.selectByStudentNo(studentNo);
         String cpassword = DigestUtils.md5DigestAsHex(password.getBytes());
         if (stu!=null){
             if (stu.getStudentPassword().equals(cpassword)){

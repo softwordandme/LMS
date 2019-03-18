@@ -1,5 +1,11 @@
 package com.lms.po;
 
+/**
+ * Teacher class
+ *
+ * @author zz
+ * @date 2019
+ */
 public class Teacher {
     private Integer teacherId;
 

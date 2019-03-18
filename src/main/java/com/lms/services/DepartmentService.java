@@ -16,7 +16,7 @@ public class DepartmentService {
     DepartmentDao departmentDao;
 
     public Department findDepartmentByDepartmentId(Integer departmentId){
-        return  departmentDao.findDepartmentByDepartmentId(departmentId);
+        return  departmentDao.selectByPrimaryKey(departmentId);
     }
 
     public String findDepartmentNameById(Integer departmentId){
